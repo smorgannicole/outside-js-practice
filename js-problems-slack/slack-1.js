@@ -19,15 +19,26 @@
 
 // ## First Character
 // Write a function firstChar(str) that returns the first character of a string.
-const firstChar = (stringHere) => {
-    let getFirstChar = stringHere.substring(0, 1);
-    return getFirstChar;
-};
-const oneChar = firstChar("Morgan");
-console.log(oneChar);
+// const firstChar = (stringHere) => {
+//     let getFirstChar = stringHere.substring(0, 1);
+//     return getFirstChar;
+// };
+// const oneChar = firstChar("Tree");
+// console.log(oneChar);
 
 // ## Last Character
 // Write a function lastChar(str) that returns the last character of a string.
+
+const lastChar = (string) => {
+    let getStringLength = string.length;
+    let startOfLastChar = getStringLength -1;
+    let endOfLastChar = getStringLength;
+    let getLastChar = string.substring(startOfLastChar, endOfLastChar);
+    return getLastChar;
+}
+const giveMeTheChar = lastChar("Adjnfjkebwrkf");
+console.log(giveMeTheChar);
+
 // ## Is Palindrome?
 //     Write a function isPalindrome(str) that takes in a string and returns
 //     true if the string is a palindrome, false otherwise. A palindrome is a word that is spelled
