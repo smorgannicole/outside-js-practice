@@ -29,15 +29,15 @@
 // ## Last Character
 // Write a function lastChar(str) that returns the last character of a string.
 
-const lastChar = (string) => {
-    let getStringLength = string.length;
-    let startOfLastChar = getStringLength -1;
-    let endOfLastChar = getStringLength;
-    let getLastChar = string.substring(startOfLastChar, endOfLastChar);
-    return getLastChar;
-}
-const giveMeTheChar = lastChar("Adjnfjkebwrkf");
-console.log(giveMeTheChar);
+// const lastChar = (string) => {
+//     let getStringLength = string.length;
+//     let startOfLastChar = getStringLength -1;
+//     let endOfLastChar = getStringLength;
+//     let getLastChar = string.substring(startOfLastChar, endOfLastChar);
+//     return getLastChar;
+// }
+// const giveMeTheChar = lastChar("Adjnfjkebwrkf");
+// console.log(giveMeTheChar);
 
 // ## Is Palindrome?
 //     Write a function isPalindrome(str) that takes in a string and returns
@@ -45,3 +45,33 @@ console.log(giveMeTheChar);
 //     the same forwards and backwards i.e. racecar, mom, kayak.
 //     To help, here is a function reverseString(str) that takes in a
 //     string and returns the reversed string. You'll need to use it to solve isPalindrome.
+
+const isPalindrome = (string) => {
+    const throwItInReverse = string.split("").reduce((acc, char) => char + acc, "");
+    const stringLowerCase = string.toLowerCase();
+    const reverseLowerCase = throwItInReverse.toLowerCase();
+    if (stringLowerCase === reverseLowerCase) {
+        alert("This is a Palindrome");
+    } else {
+        alert("This is not a Palindrome");
+    }
+}
+const enterWord = prompt("Enter any word to see if it is a Palindrome");
+let willItBePalindrome = isPalindrome(enterWord);
+console.log(willItBePalindrome);
+
+// const reverseString = (string) => {
+//     let throwItInReverse = "";
+//     let indexCount = string.length - 1;
+//     while (indexCount >= 0) {
+//         throwItInReverse += string.substring(indexCount, indexCount + 1);
+//         indexCount--;
+//     }
+//
+// }
+// let isAPal = reverseString("racecar");
+// console.log(isAPal);
+// ///////
+// const throwItInReverse = string.split("").reduce((acc, char) => char + acc, "");
+// console.log(reversedString);
+// /////
