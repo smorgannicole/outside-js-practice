@@ -60,18 +60,4 @@ const enterWord = prompt("Enter any word to see if it is a Palindrome");
 let willItBePalindrome = isPalindrome(enterWord);
 console.log(willItBePalindrome);
 
-// const reverseString = (string) => {
-//     let throwItInReverse = "";
-//     let indexCount = string.length - 1;
-//     while (indexCount >= 0) {
-//         throwItInReverse += string.substring(indexCount, indexCount + 1);
-//         indexCount--;
-//     }
-//
-// }
-// let isAPal = reverseString("racecar");
-// console.log(isAPal);
-// ///////
-// const throwItInReverse = string.split("").reduce((acc, char) => char + acc, "");
-// console.log(reversedString);
-// /////
+
