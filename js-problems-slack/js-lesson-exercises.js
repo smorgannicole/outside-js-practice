@@ -29,9 +29,9 @@
 
 //while and do while practice
 
-let number = 2;
+let number = 1;
 
-while (number < 10000) {
-    console.log(number + `this number doubled is...`);
-    number * 2;
+while (number < 65536) {
+    number *= 2;
+    console.log(number);
 }
