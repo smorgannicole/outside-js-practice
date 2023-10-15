@@ -110,27 +110,21 @@
 
 
 function titleCase(inputString) {
-    // Split the input string into words
     const words = inputString.split(' ');
-// Initialize an array to store the title-cased words
 const titleCasedWords = [];
-// Iterate through each word
 for (const word of words) {
-    // Capitalize the first letter of the word and make the rest of the word lowercase
     const titleCasedWord = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
     titleCasedWords.push(titleCasedWord);
 }
 
-// Join the title-cased words back into a single string
 const titleCasedString = titleCasedWords.join(' ');
 
 return titleCasedString;
 }
 
-// Test the function
 const sentence = "this is a sample sentence";
 const title = titleCase(sentence);
-console.log(title); // "This Is A Sample Sentence"
+console.log(title);
 
 
 
