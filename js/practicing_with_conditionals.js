@@ -6,14 +6,14 @@
 // 	console.log("The user is NOT logged in!");
 // }
 
-const nmrOfUsers = 1000;
-if (nmrOfUsers >= 10000) {
-	console.log("OKay, that's too many users. Please tell marketing to stop.");
-} else if (nmrOfUsers >= 200) {
-	console.log("That's a lot of users!");
-} else {
-	console.log("Marketing needs to do a better job!");
-}
+// const nmrOfUsers = 1000;
+// if (nmrOfUsers >= 10000) {
+// 	console.log("OKay, that's too many users. Please tell marketing to stop.");
+// } else if (nmrOfUsers >= 200) {
+// 	console.log("That's a lot of users!");
+// } else {
+// 	console.log("Marketing needs to do a better job!");
+// }
 
 // const userRole = "admin";
 
@@ -89,3 +89,49 @@ if (nmrOfUsers >= 10000) {
 // }
 
 // console.log("testing");
+
+/** Write a JavaScript function named checkNumber that takes a single parameter, number, representing a numeric value. The function should determine whether the number is positive, negative, or zero and return an appropriate message. */
+
+// const checkNumber = (number) => {
+//     let result;
+//     if(number > 0) {
+//         result = "positive";
+//     } else if(number < 0) {
+//         result = "negative";
+//     } else {
+//         result = "zero";
+//     }
+//     return result;
+// }
+// const whatIsNum = checkNumber(-9);
+// console.log(whatIsNum);
+
+/** Write a JavaScript function named titleCase that takes a string as a parameter and converts it to title case. Title case means that the first letter of each word in the string should be capitalized, while all other letters should be in lowercase. */
+
+
+function titleCase(inputString) {
+    // Split the input string into words
+    const words = inputString.split(' ');
+// Initialize an array to store the title-cased words
+const titleCasedWords = [];
+// Iterate through each word
+for (const word of words) {
+    // Capitalize the first letter of the word and make the rest of the word lowercase
+    const titleCasedWord = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    titleCasedWords.push(titleCasedWord);
+}
+
+// Join the title-cased words back into a single string
+const titleCasedString = titleCasedWords.join(' ');
+
+return titleCasedString;
+}
+
+// Test the function
+const sentence = "this is a sample sentence";
+const title = titleCase(sentence);
+console.log(title); // "This Is A Sample Sentence"
+
+
+
+
