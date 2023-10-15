@@ -107,25 +107,37 @@
 // console.log(whatIsNum);
 
 /** Write a JavaScript function named titleCase that takes a string as a parameter and converts it to title case. Title case means that the first letter of each word in the string should be capitalized, while all other letters should be in lowercase. */
+// function titleCase(inputString) {
+//     const words = inputString.split(' ');
+// const titleCasedWords = [];
+// for (const word of words) {
+//     const titleCasedWord = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+//     titleCasedWords.push(titleCasedWord);
+// }
+//
+// const titleCasedString = titleCasedWords.join(' ');
+//
+// return titleCasedString;
+// }
+//
+// const sentence = "this is a sample sentence";
+// const title = titleCase(sentence);
+// console.log(title);
+/** Write a JavaScript function named countVowels that takes a string as a parameter and counts the number of vowels (a, e, i, o, u) in the string. The function should return the count of vowels in the string. */
+function countVowels(inputString) {
+    const lowercaseString = inputString.toLowerCase();
+    let vowelCount = 0;
 
-
-function titleCase(inputString) {
-    const words = inputString.split(' ');
-const titleCasedWords = [];
-for (const word of words) {
-    const titleCasedWord = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    titleCasedWords.push(titleCasedWord);
+    for (const char of lowercaseString) {
+        if (char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u') {
+            vowelCount++;
+        }
+    }
+    return vowelCount;
 }
-
-const titleCasedString = titleCasedWords.join(' ');
-
-return titleCasedString;
-}
-
-const sentence = "this is a sample sentence";
-const title = titleCase(sentence);
-console.log(title);
-
+const text = "Hello, World!";
+const vowelCount = countVowels(text);
+console.log(`The number of vowels in the text is: ${vowelCount}`);
 
 
 
