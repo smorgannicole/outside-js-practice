@@ -13,14 +13,29 @@
 
  The factorial of a non-negative integer n, denoted as n!, is the product of all positive integers from 1 to n. For example, 5! is equal to 5 x 4 x 3 x 2 x 1, which is 120. */
 
-const calculateFactorial = (number) => {
-    let result = 1;
-    if(number > 0){
-        for(let i = 1; i <= number; i++) {
-            result *= i;
-        }
+// const calculateFactorial = (number) => {
+//     let result = 1;
+//     if(number > 0){
+//         for(let i = 1; i <= number; i++) {
+//             result *= i;
+//         }
+//     }
+//     return result;
+// }
+// const runFactorial = calculateFactorial(5);
+// console.log(runFactorial);
+
+/** Write a JavaScript function named isEven that takes a single parameter, number, representing an integer. The function should return true if the number is even and false if it's odd. */
+
+const isEven = (number) => {
+    let result;
+    if(number % 2 === 0) {
+        result = true;
+    } else {
+        result = false;
     }
     return result;
 }
-const runFactorial = calculateFactorial(5);
-console.log(runFactorial);
+let checkIfEven = isEven(67);
+console.log(checkIfEven);
+
