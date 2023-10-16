@@ -124,20 +124,33 @@
 // const title = titleCase(sentence);
 // console.log(title);
 /** Write a JavaScript function named countVowels that takes a string as a parameter and counts the number of vowels (a, e, i, o, u) in the string. The function should return the count of vowels in the string. */
-function countVowels(inputString) {
-    const lowercaseString = inputString.toLowerCase();
-    let vowelCount = 0;
+// function countVowels(inputString) {
+//     const lowercaseString = inputString.toLowerCase();
+//     let vowelCount = 0;
+//
+//     for (const char of lowercaseString) {
+//         if (char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u') {
+//             vowelCount++;
+//         }
+//     }
+//     return vowelCount;
+// }
+// const text = "Hello, World!";
+// const vowelCount = countVowels(text);
+// console.log(`The number of vowels in the text is: ${vowelCount}`);
 
-    for (const char of lowercaseString) {
-        if (char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u') {
-            vowelCount++;
-        }
+/**Write a JavaScript function named isPalindrome that takes a string as a parameter and checks if the string is a palindrome.*/
+const isPalindrome = (string) => {
+    const stringToLower = string.toLowerCase();
+    const stringToLowerReversed = reverseString(stringToLower);
+    if(stringToLower === stringToLowerReversed) {
+        return "we have a palindrome";
+    } else {
+        return "this is not a palindrome"
     }
-    return vowelCount;
 }
-const text = "Hello, World!";
-const vowelCount = countVowels(text);
-console.log(`The number of vowels in the text is: ${vowelCount}`);
+const runPalindrome = isPalindrome("racecar");
+console.log(runPalindrome);
 
 
 
