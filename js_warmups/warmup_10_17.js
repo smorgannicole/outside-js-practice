@@ -1,6 +1,9 @@
 // Function to find the largest number in an array
 const findLargestNumber = (arr) => {
-    let largest = 0;
+    if(!Array.isArray(arr) && arr.length === 0) {
+        return false;
+    }
+    let largest = arr[0]; //using arry in case theres a neg number
     for(const number of arr) {
         if(number > largest) {
             largest = number;
