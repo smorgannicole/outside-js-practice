@@ -49,31 +49,54 @@
 //
 // })();
 
-const targetNumber = Math.floor(Math.random() * 100) + 1;
-
-let attempts = 0;
-
-function checkGuess() {
-    let userGuess = parseInt(prompt("Guess a number between 1 and 100"));
-    while (userGuess !== targetNumber) {
-        attempts++;
-        if(userGuess === targetNumber) {
-            return `You guessed the number! Your total number of attempts was ${attempts}`;
-            let userGuess = parseInt(prompt("Guess a number between 1 and 100"));
-        } else if(userGuess < targetNumber) {
-            return `The number you guessed was less than the random number. Your total number of attempts was ${attempts}`;
-            let userGuess = parseInt(prompt("Guess a number between 1 and 100"));
-        } else if(userGuess > targetNumber) {
-            return `The number you guessed was greater than the random number. Your total number of attempts was ${attempts}`;
-            let userGuess = parseInt(prompt("Guess a number between 1 and 100"));
-        } else {
-            return `Please enter a number between 1 and 100`;
-            let userGuess = parseInt(prompt("Guess a number between 1 and 100"));
-        }
-    }
-}
-const guessThatNum = checkGuess();
-console.log(guessThatNum);
+// const targetNumber = Math.floor(Math.random() * 100) + 1;
+//
+// let attempts = 0;
+//
+// function checkGuess() {
+//     let userGuess = parseInt(prompt("Guess a number between 1 and 100"));
+//     while (userGuess !== targetNumber) {
+//         attempts++;
+//         if(userGuess === targetNumber) {
+//             return `You guessed the number! Your total number of attempts was ${attempts}`;
+//             let userGuess = parseInt(prompt("Guess a number between 1 and 100"));
+//         } else if(userGuess < targetNumber) {
+//             return `The number you guessed was less than the random number. Your total number of attempts was ${attempts}`;
+//             let userGuess = parseInt(prompt("Guess a number between 1 and 100"));
+//         } else if(userGuess > targetNumber) {
+//             return `The number you guessed was greater than the random number. Your total number of attempts was ${attempts}`;
+//             let userGuess = parseInt(prompt("Guess a number between 1 and 100"));
+//         } else {
+//             return `Please enter a number between 1 and 100`;
+//             let userGuess = parseInt(prompt("Guess a number between 1 and 100"));
+//         }
+//     }
+// }
+// const guessThatNum = checkGuess();
+// console.log(guessThatNum);
 
 //recursion is a way to loop
 // use of traditional function & const for userGuess
+
+// Function to find the largest number in an array
+const findLargestNumber = (arr) => {
+    // validate and return early
+    // start a variable "largest" at 0
+    let largest = 0;
+    // loop through arr and replace "largest" if value is greater
+    for(const number of arr) {
+        if(number > largest) {
+            largest = number;
+        }
+    }
+    // return largest;
+    return largest;
+};
+
+(() => {
+    // Sample array of numbers
+    const numbers = [42, 17, 8, 94, 23, 61, 12, 51, 6];
+    // Call the function and display the result
+    const result = findLargestNumber(numbers);
+    console.log(result);
+})();
