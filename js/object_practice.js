@@ -80,23 +80,17 @@
 
 // Function to find the largest number in an array
 const findLargestNumber = (arr) => {
-    // validate and return early
-    // start a variable "largest" at 0
     let largest = 0;
-    // loop through arr and replace "largest" if value is greater
     for(const number of arr) {
         if(number > largest) {
             largest = number;
         }
     }
-    // return largest;
     return largest;
 };
 
 (() => {
-    // Sample array of numbers
     const numbers = [42, 17, 8, 94, 23, 61, 12, 51, 6];
-    // Call the function and display the result
     const result = findLargestNumber(numbers);
     console.log(result);
 })();
