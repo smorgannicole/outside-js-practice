@@ -1,29 +1,25 @@
-
-
- * {
-     box-sizing: border-box;
- }
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
-    font-family: Helvetica;
-    font-weight: bold;
-}
-.flex-container {
-    display: flex;
-    width: 100%;
-    border: 3px solid goldenrod;
-    flex-direction: column;
-    align-items: space-evenly;
+    padding: 0;
 }
 
- .box1 {
-     font-size: 15px;
- }
- .box2 {
-     font-size: 30px;
- }
- .box3 {
-     font-size: 45px;
- }
- .box4 {
-     font-size: 60px;
+.flex-container /*parent*/ {
+    display: flex;
+    background-color: rosybrown;
+    justify-content: flex-end; /*this is used on container, not items*/
+    /*justify-content: end; puts items back in the top left where they started*/
+    /*justify-content: center; puts items in center middle top*/
+    /*justify-content: space-around; puts remaining space around elements (uneven)*/
+    /*justify-content: space-between; puts remaining space between elements evenly with no space on outside*/
+    /*justify-content: space-evenly; puts space between each side of child evenly*/
+
+}
+
+.item /*children*/ {
+    width: 100px;
+    height: 100px;
+    background-color: darkred;
+    margin: 10px;
+    color: white;
+}
