@@ -5,14 +5,20 @@
 }
 
 .flex-container /*parent*/ {
+    height: 400px;
     display: flex;
     background-color: rosybrown;
-    justify-content: flex-end; /*this is used on container, not items*/
+    justify-content: space-between; /*this is used on container, not items*/
     /*justify-content: end; puts items back in the top left where they started*/
     /*justify-content: center; puts items in center middle top*/
     /*justify-content: space-around; puts remaining space around elements (uneven)*/
     /*justify-content: space-between; puts remaining space between elements evenly with no space on outside*/
     /*justify-content: space-evenly; puts space between each side of child evenly*/
+    /*all of the above is altering along the main axis. to alter on cross axis use ALIGN ITEMS*/
+
+    align-items: center;
+
+
 
 }
 
@@ -23,3 +29,16 @@
     margin: 10px;
     color: white;
 }
+
+.item:nth-of-type(1) /*to alter a specific item*/ {
+    align-self: start;
+}
+
+.item:nth-of-type(2) /*to alter a specific item*/ {
+    align-self: center;
+}
+
+.item:nth-of-type(3) /*to alter a specific item*/ {
+    align-self: flex-end;
+}
+
