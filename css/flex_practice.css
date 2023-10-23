@@ -5,6 +5,7 @@
 }
 
 .flex-container /*parent*/ {
+    height: 400px;
     display: flex;
     background-color: rosybrown;
     justify-content: space-between; /*this is used on container, not items*/
