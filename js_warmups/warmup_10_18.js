@@ -40,18 +40,33 @@
 // })();
 
 /** warmup 10/19*/
-const fizzBuzz = (start, end) => {
-        for(let i = start; i <= end; i++) {
-            if(start % 3 === 0 && start % 5 === 0) {
-                console.log(`${start} is divisible by 3 and 5`);
-            } else if (start % 5 === 0) {
-                console.log(`${start} is divisible by 5`);
-            } else if (start % 3 === 0) {
-                console.log(`${start} is divisible by 3`);
-            } else {
-                console.log(`${start} is not divisible by 3 or 5`);
-            }
-            start++;
+// const fizzBuzz = (start, end) => {
+//         for(let i = start; i <= end; i++) {
+//             if(start % 3 === 0 && start % 5 === 0) {
+//                 console.log(`${start} is divisible by 3 and 5`);
+//             } else if (start % 5 === 0) {
+//                 console.log(`${start} is divisible by 5`);
+//             } else if (start % 3 === 0) {
+//                 console.log(`${start} is divisible by 3`);
+//             } else {
+//                 console.log(`${start} is not divisible by 3 or 5`);
+//             }
+//             start++;
+//         }
+// }
+// fizzBuzz(1, 100);
+
+/**warmup 10/24*/
+
+const findLongestWord = (sentence) => {
+    const sentenceArray = sentence.split(" ");
+    let getThatWord = "";
+    for(let word of sentenceArray) {
+        if (word.length > getThatWord.length) {
+            getThatWord = word;
         }
+    }
+    return getThatWord;
 }
-fizzBuzz(1, 100);
+const getLongWord = findLongestWord("The quick brown fox jumped over the lazy dog");
+console.log(getLongWord);
