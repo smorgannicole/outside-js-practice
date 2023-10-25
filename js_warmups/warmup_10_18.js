@@ -58,15 +58,31 @@
 
 /**warmup 10/24*/
 
-const findLongestWord = (sentence) => {
-    const sentenceArray = sentence.split(" ");
-    let getThatWord = "";
-    for(let word of sentenceArray) {
-        if (word.length > getThatWord.length) {
-            getThatWord = word;
+// const findLongestWord = (sentence) => {
+//     const sentenceArray = sentence.split(" ");
+//     let getThatWord = "";
+//     for(let word of sentenceArray) {
+//         if (word.length > getThatWord.length) {
+//             getThatWord = word;
+//         }
+//     }
+//     return getThatWord;
+// }
+// const getLongWord = findLongestWord("The quick brown fox jumped over the lazy dog");
+// console.log(getLongWord);
+
+const findSecondLargest = (numbers) => {
+    let highestNum = 0;
+    let secondLargest = 0;
+    for(let number of numbers) {
+        if(number > highestNum) {
+            secondLargest = highestNum;
+            highestNum = number;
+        } else if(number > secondLargest && number !== highestNum) {
+            secondLargest = number;
         }
     }
-    return getThatWord;
+    return secondLargest;
 }
-const getLongWord = findLongestWord("The quick brown fox jumped over the lazy dog");
-console.log(getLongWord);
+let runIt = findSecondLargest ([1, 5, 14, 25, 3, 2]);
+console.log(runIt);
