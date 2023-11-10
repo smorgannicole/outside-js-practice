@@ -71,18 +71,185 @@
 // const getLongWord = findLongestWord("The quick brown fox jumped over the lazy dog");
 // console.log(getLongWord);
 
-const findSecondLargest = (numbers) => {
-    let highestNum = 0;
-    let secondLargest = 0;
-    for(let number of numbers) {
-        if(number > highestNum) {
-            secondLargest = highestNum;
-            highestNum = number;
-        } else if(number > secondLargest && number !== highestNum) {
-            secondLargest = number;
-        }
+// const findSecondLargest = (numbers) => {
+//     let highestNum = 0;
+//     let secondLargest = 0;
+//     for(let number of numbers) {
+//         if(number > highestNum) {
+//             secondLargest = highestNum;
+//             highestNum = number;
+//         } else if(number > secondLargest && number !== highestNum) {
+//             secondLargest = number;
+//         }
+//     }
+//     return secondLargest;
+// }
+// let runIt = findSecondLargest ([1, 5, 14, 25, 3, 2]);
+// console.log(runIt);
+
+/**warmup 10/25*/
+// function shuffleAndPairNames(names) {
+//     // Shuffle the array using the Fisher-Yates algorithm
+//     for (let i = names.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [names[i], names[j]] = [names[j], names[i]];
+//     }
+//
+//     // Initialize an array to hold the pairs
+//     const pairs = [];
+//
+//     // Pair the names into groups of 2
+//     for (let i = 0; i < names.length; i += 2) {
+//         if (i + 1 < names.length) {
+//             pairs.push([names[i], names[i + 1]]);
+//         } else {
+//             // If there's only one name left, add it to the last group
+//             pairs[pairs.length - 1].push(names[i]);
+//         }
+//     }
+//     return pairs;
+// }
+//
+// // Example usage:
+// const names = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Helen", "Ivy", "Jack", "Kate", "Liam", "Mia", "Nora", "Oliver", "Penny", "Quinn", "Ryan", "Sophia"];
+//
+// const shuffledPairs = shuffleAndPairNames(names);
+// console.log(shuffledPairs);
+
+/** Write a JavaScript function called shuffleAndGroupNumbers that takes an array of 15 numbers as a parameter. This function should shuffle the numbers, and then pair them into groups of 3 with one group of 6 if there are any remaining numbers. Finally, it should return an array of these groups.
+
+ For example, if you call shuffleAndGroupNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]), the function should return an array like this: [[3, 1, 12], [15, 2, 5], [9, 6, 11], [10, 7, 8, 14, 4, 13]]. */
+
+// const shuffleAndGroupNumbers = (arr) => {
+//     for (let i = arr.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [arr[i], arr[j]] = [arr[j], arr[i]];
+//     }
+//
+//     const pairsOf3 = [];
+//
+//     // Pair the names into groups of 2
+//     for (let i = 0; i < arr.length; i += 3) {
+//         if (i + 3 < arr.length) {
+//             pairsOf3.push([arr[i], arr[i + 1]]);
+//         } else {
+//             // If there's only one name left, add it to the last group
+//             pairsOf3[pairsOf3.length - 1].push(arr[i]);
+//         }
+//     }
+//     return pairsOf3;
+// }
+// const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+// const run = shuffleAndGroupNumbers(nums);
+// console.log(run);
+/**warmup 10/30*/
+// function digitalRoot(n) {
+//     let sumOfNum = 0;
+//     let splitNum = n.toString().split('');
+//     for (let num of splitNum) {
+//         let backToNum = parseFloat(num);
+//         sumOfNum += backToNum
+//     }
+//     while(sumOfNum > 10) {
+//         let splitNumber = sumOfNum.toString().split('');
+//         for (let number of splitNumber) {
+//             let backToNumber = parseFloat(number);
+//             sumOfNum += backToNumber;
+//         }
+//     }
+//         return sumOfNum;
+// }
+// let run = digitalRoot(22);
+// console.log(run);
+
+/**warmup 11/1 A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
+//
+//  Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.*/
+//
+// function isPangram(string){
+//     let alphabet = `abcdefghijklmnopqrstuvwxyz`;
+//     alphabet = alphabet.split("");
+//     let lowerString = string.toLowerCase();
+//     let toArray = lowerString.split( "");  //has to be separated by empty string or it will be comparing "a" to "The"
+//     for(let letter of alphabet) {
+//         if (toArray.includes(letter)) {
+//             return true;
+//         }
+//     } return false;
+// }
+// const run = isPangram("The quick brown fox jumps over the lazy dog");
+// console.log(run);
+/** vowel practice problem*/
+// function getCount(str) {
+//     if(typeof str !== "string"){
+//         return false;
+//     }
+//     let vowels ="aeiou" ;
+//     let i = 0;
+//     for(let letter of str) {
+//         if(vowels.includes(letter)) {
+//             i += 1;
+//         }
+//     }   return i;
+// }
+// let run = getCount(`abracadabra`);
+// console.log(run);
+
+/** Return the number (count) of vowels in the given string. We will consider a, e, i, o, u as vowels for this Kata (but not y). The input string will only consist of lower case letters and/or spaces.*/
+// function getCount(str) {
+//     if (typeof str !== "string") {
+//         return false;
+//     }
+//     const vowels = "aeiou"
+//     const strArr = str.split(``);
+//     let i = 0;
+//     for (let str of strArr) {
+//         if (vowels.includes(str)) {
+//             i++;
+//         }
+//     } return i;
+// }
+// const runIt = getCount(`alphabet`);
+// console.log(runIt)
+
+/** If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+ Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
+ Additionally, if the number is negative, return 0.
+ Note: If the number is a multiple of both 3 and 5, only count it once.*/
+function solution(number){
+    let enteredNumber = number;
+    let multiply = 0;
+    let final = 0;
+    let lastAdd = 0;
+    for (let i = 0; enteredNumber > 3; i++) {
+        enteredNumber = enteredNumber - 3;
     }
-    return secondLargest;
+    if (enteredNumber === 1) {
+        let addedTwo = enteredNumber + 2;
+        for (let i = 1; addedTwo < number; i++) {
+            multiply = 0;
+            multiply = (i * 3);
+            if (multiply === 3) {
+                lastAdd = 0;
+            } else {
+                lastAdd = multiply;
+            }
+            addedTwo = addedTwo + 3;
+            final = lastAdd + multiply;
+        }
+        return final;
+    }
+
+
+
+    // if (number % 3 === 0) {
+    //     const divOddNum = (number / 3)
+    //     const howManyOdd = (divOddNum * 3)
+    // }
+    // if (number % 2 === 0) {
+    //     const divEvenNum = (number / 3)
+    //     const howManyEven = (divEvenNum * 2)
+    // }
 }
-let runIt = findSecondLargest ([1, 5, 14, 25, 3, 2]);
-console.log(runIt);
+const runIt = solution(10);
+console.log(runIt)
