@@ -217,39 +217,27 @@
  Additionally, if the number is negative, return 0.
  Note: If the number is a multiple of both 3 and 5, only count it once.*/
 function solution(number){
-    let enteredNumber = number;
-    let multiply = 0;
-    let final = 0;
-    let lastAdd = 0;
-    for (let i = 0; enteredNumber > 3; i++) {
-        enteredNumber = enteredNumber - 3;
+    if (number < 0) {
+        return 0;
     }
-    if (enteredNumber === 1) {
-        let addedTwo = enteredNumber + 2;
-        for (let i = 1; addedTwo < number; i++) {
-            multiply = 0;
-            multiply = (i * 3);
-            if (multiply === 3) {
-                lastAdd = 0;
-            } else {
-                lastAdd = multiply;
-            }
-            addedTwo = addedTwo + 3;
-            final = lastAdd + multiply;
+    if (typeof number !== "number") {
+        return 0;
+    }
+    let sum3 = 0;
+    let sum5 = 0;
+    let sum = 0;
+    for (let i = 1; i < number; i++) {
+        if (i % 3 === 0) {
+            sum3 += i;
         }
-        return final;
     }
-
-
-
-    // if (number % 3 === 0) {
-    //     const divOddNum = (number / 3)
-    //     const howManyOdd = (divOddNum * 3)
-    // }
-    // if (number % 2 === 0) {
-    //     const divEvenNum = (number / 3)
-    //     const howManyEven = (divEvenNum * 2)
-    // }
+    for (let i = 1; i < number; i++) {
+        if (i % 5 === 0) {
+            sum5 += 5;
+        }
+    }
+    sum = sum3 + sum5;
+    return sum;
 }
-const runIt = solution(10);
+const runIt = solution(13);
 console.log(runIt)
