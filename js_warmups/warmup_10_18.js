@@ -216,28 +216,44 @@
  Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
  Additionally, if the number is negative, return 0.
  Note: If the number is a multiple of both 3 and 5, only count it once.*/
-function solution(number){
-    if (number < 0) {
-        return 0;
-    }
-    if (typeof number !== "number") {
-        return 0;
-    }
-    let sum3 = 0;
-    let sum5 = 0;
-    let sum = 0;
-    for (let i = 1; i < number; i++) {
-        if (i % 3 === 0) {
-            sum3 += i;
-        }
-    }
-    for (let i = 1; i < number; i++) {
-        if (i % 5 === 0) {
-            sum5 += 5;
-        }
-    }
-    sum = sum3 + sum5;
-    return sum;
-}
-const runIt = solution(13);
-console.log(runIt)
+// function solution(number){
+//     if (number < 0) {
+//         return 0;
+//     }
+//     if (typeof number !== "number") {
+//         return 0;
+//     }
+//     let sum3 = 0;
+//     let sum5 = 0;
+//     let sum = 0;
+//     for (let i = 1; i < number; i++) {
+//         if (i % 3 === 0) {
+//             sum3 += i;
+//         }
+//     }
+//     for (let i = 1; i < number; i++) {
+//         if (i % 5 === 0) {
+//             sum5 += 5;
+//         }
+//     }
+//     sum = sum3 + sum5;
+//     return sum;
+// }
+// const runIt = solution(13);
+// console.log(runIt)
+/** Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+ For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1. (81-1-1-81) */
+// function squareDigits(num){
+//     const toString = num.toString();
+//     const separateNum = toString.split(``);
+//     let concatNums = ``;
+//     let backToNums = 0;
+//     for(let num of separateNum) {
+//         const numSquared = num**2;
+//         concatNums += numSquared;
+//         backToNums = parseFloat(concatNums);
+//     }
+//     return backToNums;
+// }
+// const runIt = squareDigits(678);
+// console.log(runIt);
