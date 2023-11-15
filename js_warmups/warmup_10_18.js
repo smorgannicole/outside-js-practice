@@ -257,3 +257,24 @@
 // }
 // const runIt = squareDigits(678);
 // console.log(runIt);
+/** In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+ Examples
+ highAndLow("1 2 3 4 5");  // return "5 1"
+ highAndLow("1 2 -3 4 5"); // return "5 -3"
+ highAndLow("1 9 3 4 -5"); // return "9 -5" */
+function highAndLow(numbers){
+    let numArr = numbers.split(` `);
+    let toNum = parseFloat(numArr);
+    let highestNum = 0;
+    let lowestNum = 0;
+    for (let number of numArr) {
+        if (number > highestNum) {
+            highestNum = number;
+        }
+        for (let i = number; i >= number; i--) {
+            lowestNum = i;
+        }
+    } return lowestNum;
+}
+const runIt = highAndLow("6 7 8 9");
+console.log(runIt);
