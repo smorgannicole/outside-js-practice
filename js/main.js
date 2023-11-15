@@ -94,7 +94,7 @@ function renderEditForm(coffee, coffeeElement) {
 		const newCoffee = {
 			name: editedName,
 			roast: editedRoast,
-			userEdited: true
+			userGenerated: true
 		};
 		coffees.push(newCoffee);
 		localStorage.setItem("coffees", JSON.stringify(coffees));
