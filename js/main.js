@@ -16,19 +16,16 @@ const coffees = [
 	{ id: 13, name: "Italian", roast: "dark" },
 	{ id: 14, name: "French", roast: "dark" },
 ];
-localStorage.setItem("coffees", JSON.stringify(coffees));
-let storedCoffees = localStorage.getItem("coffees");
 
 // to remove a coffee
 // localStorage.removeItem("coffees");
 
 const addCoffee = (coffeeName, roastType) => {
-	storedCoffees = JSON.parse(localStorage.getItem("coffees")) || [];
+	const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
 	const newCoffee = { name: coffeeName, roast: roastType };
-	storedCoffees.push(newCoffee);
-	localStorage.setItem("coffees", JSON.stringify(newCoffee));
-	const storedCoffee = JSON.parse(localStorage.getItem("coffees"));
-	renderCoffeeElement(storedCoffee);
+	coffees.push(newCoffee);
+	localStorage.setItem("coffees", JSON.stringify(coffees));
+	updateCoffees();
 };
 
 const renderCoffeeElement = (coffee) => {
@@ -50,7 +47,8 @@ const renderCoffeeElement = (coffee) => {
 	// return coffeeElement;
 };
 
-const updateCoffees = (coffees) => {
+const updateCoffees = () => {
+	const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
 	document.querySelector("#coffees").innerHTML = "";
 	const roastSelectionInput = document.querySelector("#roast-selection");
 	const roastSelectionValue = roastSelectionInput.value;
@@ -60,8 +58,8 @@ const updateCoffees = (coffees) => {
 	let filteredCoffees = coffees;
 
 	if (roastSelectionValue !== "all") {
-		filteredCoffees = filteredCoffees.filter((coffee) => {
-			return coffee.roast.toLowerCase().includes(roastSelectionValue.toLowerCase());
+		filteredCoffees = filteredCoffees.filter((coffees) => {
+			return coffees.roast.toLowerCase().includes(roastSelectionValue.toLowerCase());
 		});
 	}
 
@@ -107,7 +105,16 @@ const handleFilterEvents = (coffees) => {
 
 // MAIN
 (() => {
-	renderCoffeeElement(coffees)
+	const registerCoffees = () => {
+		if (localStorage.getItem("coffees")) {
+			return;
+		} localStorage.setItem("coffees", JSON.stringify(coffees))
+	}
+	// window.addEventListener("load", () => {
+	// 	const storedCoffees = JSON.parse(localStorage.getItem("coffees")) || [];
+	// 	renderCoffeeElement(storedCoffees, document.querySelector("#coffees"));
+	// });
+	// renderCoffeeElement(coffees)
 	updateCoffees(coffees);
 	handleFilterEvents(coffees);
 	const addBtn = document.querySelector("button[data-add]");
