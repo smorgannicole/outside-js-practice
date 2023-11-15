@@ -15,12 +15,11 @@
         <label for="roast-selection"></label>
         <select id="roast-selection">
             <option selected value="">Roast Selection</option>
-            <option value="fantasy">Light</option>
-            <option value="horror">Medium</option>
-            <option value="mystery">Dark</option>
-            <option value="thriller">All</option>
+            <option value="light">Light</option>
+            <option value="medium">Medium</option>
+            <option value="dark">Dark</option>
+            <option value="all">All</option>
         </select>
-        <input id="submit" type="submit" />
     </form>
     <div class="input-group input-group-md">
         <input id="search" type="search" aria-label="Search coffees"
@@ -29,20 +28,30 @@
 
     <section class="container">
         <div class="row">
-            <div class="col flex-grow-0 flex-shrink-1">
+            <div class="col">
                 <h3>ID</h3>
             </div>
-            <div class="col flex-grow-0 flex-shrink-1">
+            <div class="col">
                 <h3>NAME</h3>
             </div>
-            <div class="col flex-grow-0 flex-shrink-1">
+            <div class="col">
                 <h3>ROAST</h3>
             </div>
         </div>
     </section>
     <section class="container">
         <div class="row">
-            <div class="col" id="coffees"></div>
+            <div  id="coffees">
+<!--            <div class="col">-->
+<!--                <p>${coffee.id}</p>-->
+<!--            </div>-->
+<!--            <div class="col">-->
+<!--                <p>${coffee.name}</p>-->
+<!--            </div>-->
+<!--            <div class="col">-->
+<!--                <p>${coffee.roast}</p>-->
+<!--            </div>-->
+            </div>
         </div>
     </section>
 

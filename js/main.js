@@ -17,62 +17,86 @@ const coffees = [
 	{ id: 14, name: "French", roast: "dark" },
 ];
 
-const createCoffeeElement = (coffee) => {
-	let tr = document.createElement("tr");
-	tr.classList.add("coffee");
-
-	tr.innerHTML = `
-        <td>${coffee.id}</td>
-        <td>${coffee.name}</td>
-        <td>${coffee.roast}</td>
+const renderCoffeeElement = (coffee) => {
+	const coffeeElement = document.createElement("div");
+	coffeeElement.classList.add(`d-flex`)
+	coffeeElement.innerHTML = `
+        <div class="col">
+            <p>${coffee.id}</p>
+		</div>
+		<div class="col">
+			<p>${coffee.name}</p>
+		</div>
+		<div class="col">
+			<p>${coffee.roast}</p>
+		</div>
     `;
-	return tr;
+	document.querySelector("#coffees").appendChild(coffeeElement);
+	// const deleteBtn = coffeeElement.querySelector("button[data-delete]");
+	// deleteBtn.addEventListener("click", (e) => {
+	// 	coffeeElement.remove();
+	// });
+	// return coffeeElement;
 };
 
-const renderCoffees = (coffees, target) => {
-	// Clear tbody before inserting new rows
-	target.innerHTML = "";
-	coffees.sort((a, b) => a.id - b.id);
-	for (let i = 0; i < coffees.length; i++) {
-		const coffeeElement = createCoffeeElement(coffees[i]);
-		target.appendChild(coffeeElement);
+const updateCoffees = (coffees) => {
+	document.querySelector("#coffees").innerHTML = "";
+	const roastSelectionInput = document.querySelector("#roast-selection");
+	const roastSelectionValue = roastSelectionInput.value;
+	const searchInput = document.querySelector("#search");
+	const searchValue = searchInput.value;
+
+	let filteredCoffees = coffees;
+
+	if (roastSelectionValue !== "all") {
+		filteredCoffees = filteredCoffees.filter((coffee) => {
+			return coffee.roast.toLowerCase().includes(roastSelectionValue.toLowerCase());
+		});
 	}
-};
 
-const updateCoffees = (e, target, selection) => {
-	e.preventDefault();
-	const selectedRoast = selection.value;
-	const filteredCoffees = coffees.filter((coffee) => coffee.roast === selectedRoast);
-	renderCoffees(filteredCoffees, target);
-};
+	filteredCoffees = filteredCoffees.filter((coffee) => {
+		return coffee.name.toLowerCase().includes(searchValue.toLowerCase());
+	});
 
+	for (let coffee of filteredCoffees) {
+		renderCoffeeElement(coffee);
+	}
+
+	filteredCoffees = filteredCoffees.filter((coffee) => {
+		return coffee.name.toLowerCase().includes(searchValue.toLowerCase());
+	});
+
+	for (let coffee of filteredCoffees) {
+		renderCoffeeElement(coffee);
+	}
+
+	// const coffeesFragment = document.createDocumentFragment();
+	// for (let coffee of filteredCoffees) {
+	// 	coffeesFragment.appendChild(renderCoffeeElement(coffee));
+	// }
+	// document.querySelector("#coffees").appendChild(coffeesFragment);
+};
 const handleFilterEvents = (coffees) => {
 	const searchInput = document.querySelector("#search");
 	searchInput.addEventListener(
 		"input",
 		debounce((e) => {
-			// if (searchInput.value.toLowerCase() === "the") {
-			// 	return;
-			// }
+			if (searchInput.value.toLowerCase() === "the") {
+				return;
+			}
 			updateCoffees(coffees);
 		}, 500)
 	);
 
-	const categoryInput = document.querySelector("#category");
-	categoryInput.addEventListener("change", (e) => {
+	const roastSelectionInput = document.querySelector("#roast-selection");
+	roastSelectionInput.addEventListener("change", (e) => {
 		updateCoffees(coffees);
 	});
 };
 
-
-// IIFE
+// MAIN
 (() => {
-	const tbody = document.querySelector("#coffees");
-	const submitButton = document.querySelector("#submit");
-	const roastSelection = document.querySelector("#roast-selection");
-	renderCoffees(coffees, tbody, roastSelection);
-
-	submitButton.addEventListener("click", (e) => {
-		updateCoffees(e, tbody, roastSelection);
-	});
+	renderCoffeeElement(coffees)
+	updateCoffees(coffees);
+	handleFilterEvents(coffees);
 })();
