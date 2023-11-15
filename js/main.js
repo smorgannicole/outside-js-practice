@@ -1,4 +1,3 @@
-// from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 import { debounce } from './utils.js';
 const coffees = [
 	{ id: 1, name: "Light City", roast: "light" },
@@ -16,18 +15,14 @@ const coffees = [
 	{ id: 13, name: "Italian", roast: "dark" },
 	{ id: 14, name: "French", roast: "dark" },
 ];
-// localStorage.setItem("coffees", JSON.stringify(coffees));
-// const storedCoffees = localStorage.getItem("coffees");
-
-// to remove a coffee
-// localStorage.removeItem("coffees");
 
 const addCoffee = (coffeeName, roastType) => {
 	const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
 	const newCoffee = {
 		name: coffeeName,
 		roast: roastType,
-		userGenerated: true
+		userGenerated: true,
+		id: Date.now()
 	};
 	coffees.push(newCoffee);
 	localStorage.setItem("coffees", JSON.stringify(coffees));
@@ -47,24 +42,61 @@ const renderCoffeeElement = (coffee) => {
 		${coffee.userGenerated ? `<button class="btn btn-danger" data-delete>Delete</button>` : ``}
 		${coffee.userGenerated ? `<button class="btn btn-secondary" data-edit>Edit</button>` : ``}
     `;
-	if (coffee.userGenerated) {
-		coffeeElement.addEventListener(`click`, e => {
+	const deleteButton = coffeeElement.querySelector(`button[data-delete]`);
+	const editButton = coffeeElement.querySelector(`button[data-edit]`)
+	if (deleteButton) {
+		deleteButton.addEventListener(`click`, e => {
 			coffeeElement.remove();
 			removeFromLocalStorage(coffee.id);
-		})
+		});
 	}
 	document.querySelector("#coffees").prepend(coffeeElement);
-	function removeFromLocalStorage(coffeeId) {
-		const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
-		const index = coffees.findIndex(coffee => coffee.id === coffeeId);
-
-		if (index !== -1) {
-			coffees.splice(index, 1);
-			localStorage.setItem("coffees", JSON.stringify(coffees));
-		}
-	}
 };
+const registerCoffees = (coffees) => {
+	if (localStorage.getItem("coffees")) {
+		return;
+	}
+	localStorage.setItem("coffees", JSON.stringify(coffees))
+}
+function removeFromLocalStorage(coffeeId) {
+	const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
+	const index = coffees.findIndex(coffee => coffee.id === coffeeId);
 
+	if (index !== -1) {
+		coffees.splice(index, 1);
+		localStorage.setItem("coffees", JSON.stringify(coffees));
+	}
+}
+function showEditForm(coffee) {
+	const editForm = document.createElement("form");
+	editForm.innerHTML = `
+            <label for="editName">Name:</label>
+            <input type="text" id="editName" value="${coffee.name}" required>
+            <label for="editRoast">Roast:</label>
+            <input type="text" id="editRoast" value="${coffee.roast}" required>
+            <button type="submit" class="btn btn-primary" data-save>Edit</button>
+        `;
+
+	editForm.addEventListener("submit", (event) => {
+		event.preventDefault();
+
+		coffee.name = editForm.querySelector("#editName").value;
+		coffee.roast = editForm.querySelector("#editRoast").value;
+
+		coffeeElement.querySelector(".col:first-child p").textContent = coffee.name;
+		coffeeElement.querySelector(".col:last-child p").textContent = coffee.roast;
+
+		updateLocalStorage(coffees);
+
+
+		editForm.remove();
+	});
+
+	coffeeElement.after(editForm);
+}
+function updateLocalStorage(coffees) {
+	localStorage.setItem("coffees", JSON.stringify(coffees));
+}
 const updateCoffees = () => {
 	const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
 	document.querySelector("#coffees").innerHTML = "";
@@ -123,14 +155,6 @@ const handleFilterEvents = (coffees) => {
 		updateCoffees(coffees);
 	});
 };
-
-const registerCoffees = (coffees) => {
-	if (localStorage.getItem("coffees")) {
-		return;
-	}
-	localStorage.setItem("coffees", JSON.stringify(coffees))
-}
-
 // MAIN
 (() => {
 	registerCoffees(coffees);
