@@ -107,10 +107,6 @@ const handleFilterEvents = (coffees) => {
 
 // MAIN
 (() => {
-	window.addEventListener("load", () => {
-		const storedCoffees = JSON.parse(localStorage.getItem("coffees")) || [];
-		renderCoffeeElement(storedCoffees, document.querySelector("#coffees"));
-	});
 	renderCoffeeElement(coffees)
 	updateCoffees(coffees);
 	handleFilterEvents(coffees);
