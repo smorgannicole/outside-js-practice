@@ -84,24 +84,23 @@ function renderEditForm(coffee, coffeeElement) {
         `;
 	editForm.addEventListener("submit", e => {
 		e.preventDefault();
+		const oldCoffeeName = coffee.name;
+		let coffees = JSON.parse(localStorage.getItem("coffees")) || [];
+		coffees = coffees.filter(coffee=> coffee.name !== oldCoffeeName);
+
 		coffee.name = editForm.querySelector("#editName").value;
 		coffee.roast = editForm.querySelector("#editRoast").value;
 
+		coffees.push({
+			name: coffee.name,
+			roast: coffee.roast,
+			userGenerated: true
+		});
 		const editedName = coffeeElement.querySelector(".col:first-child p").textContent = coffee.name;
 		const editedRoast = coffeeElement.querySelector(".col:nth-child(2) p").textContent = coffee.roast;
-
-		const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
-		const newCoffee = {
-			name: editedName,
-			roast: editedRoast,
-			userGenerated: true
-		};
-		coffees.push(newCoffee);
 		localStorage.setItem("coffees", JSON.stringify(coffees));
-		updateCoffees();
+		editForm.remove();
 	});
-	editForm.remove();
-
 	coffeeElement.after(editForm);
 }
 function updateLocalStorage(coffees) {
