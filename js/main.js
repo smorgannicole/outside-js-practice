@@ -16,14 +16,30 @@ const coffees = [
 	{ id: 13, name: "Italian", roast: "dark" },
 	{ id: 14, name: "French", roast: "dark" },
 ];
+localStorage.setItem("coffees", JSON.stringify(coffees));
+const storedCoffees = localStorage.getItem("coffees");
+if (storedCoffees) {
+	const parsedCoffees = JSON.parse(storedCoffees);
+	// Modify the parsedCoffees array as needed
+	// ...
+
+	// Store the updated data back in localStorage
+	localStorage.setItem("coffees", JSON.stringify(parsedCoffees));
+}
+// to remove a coffee
+// localStorage.removeItem("coffees");
+
+const addCoffee = (newCoffee) => {
+	const existingCoffees = JSON.parse(localStorage.getItem("coffees")) || [];
+	existingCoffees.push(newCoffee);
+	localStorage.setItem("coffees", JSON.stringify(existingCoffees));
+	renderCoffeeElement(existingCoffees, document.querySelector("#coffees"));
+};
 
 const renderCoffeeElement = (coffee) => {
 	const coffeeElement = document.createElement("div");
 	coffeeElement.classList.add(`d-flex`)
 	coffeeElement.innerHTML = `
-        <div class="col">
-            <p>${coffee.id}</p>
-		</div>
 		<div class="col">
 			<p>${coffee.name}</p>
 		</div>
@@ -96,7 +112,17 @@ const handleFilterEvents = (coffees) => {
 
 // MAIN
 (() => {
+	window.addEventListener("load", () => {
+		const storedCoffees = JSON.parse(localStorage.getItem("coffees")) || [];
+		renderCoffeeElement(storedCoffees, document.querySelector("#coffees"));
+	});
 	renderCoffeeElement(coffees)
 	updateCoffees(coffees);
 	handleFilterEvents(coffees);
+	const addBtn = document.querySelector("button[data-add]");
+	const userInput = document.querySelector("#add-form");
+	addBtn.addEventListener("click", (e) => {
+		e.preventDefault();
+		addCoffee(userInput.value);
+	});
 })();

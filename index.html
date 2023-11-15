@@ -10,27 +10,47 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Coffee!</h1>
-    <form>
-        <label for="roast-selection"></label>
-        <select id="roast-selection">
-            <option selected value="">Roast Selection</option>
-            <option value="light">Light</option>
-            <option value="medium">Medium</option>
-            <option value="dark">Dark</option>
-            <option value="all">All</option>
-        </select>
-    </form>
-    <div class="input-group input-group-md">
-        <input id="search" type="search" aria-label="Search coffees"
-               placeholder="Search coffees...">
+<header class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Coffee!</h1>
+        </div>
+        <div class="col">
+            <form>
+                <label for="roast-selection"></label>
+                <select id="roast-selection">
+                    <option selected value="">Roast Selection</option>
+                    <option value="light">Light</option>
+                    <option value="medium">Medium</option>
+                    <option value="dark">Dark</option>
+                    <option value="all">All</option>
+                </select>
+            </form>
+        </div>
+        <div class="col">
+            <div class="input-group input-group-md">
+                <input id="search" type="search" aria-label="Search coffees"
+                       placeholder="Search coffees...">
+            </div>
+        </div>
+        <div class="col">
+            <form id="add-form">
+                <h3><label class="form-label" for="add-name">Coffee Name</label></h3>
+                <input class="form-control" type="text" name="add-name" id="add-name" placeholder="Enter Coffee Name">
+                <h3><label class="form-label" for="add-roast">Roast Type</label></h3>
+                <input class="form-control" type="text" name="add-roast" id="add-roast" placeholder="Enter Roast Type">
+                <div>
+                    <button class="btn btn-primary add" data-add>Add Coffee</button>
+                </div>
+            </form>
+
+        </div>
     </div>
+</header>
+
 
     <section class="container">
         <div class="row">
-            <div class="col">
-                <h3>ID</h3>
-            </div>
             <div class="col">
                 <h3>NAME</h3>
             </div>
@@ -42,9 +62,6 @@
     <section class="container">
         <div class="row">
             <div  id="coffees">
-<!--            <div class="col">-->
-<!--                <p>${coffee.id}</p>-->
-<!--            </div>-->
 <!--            <div class="col">-->
 <!--                <p>${coffee.name}</p>-->
 <!--            </div>-->
