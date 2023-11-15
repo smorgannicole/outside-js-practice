@@ -17,23 +17,18 @@ const coffees = [
 	{ id: 14, name: "French", roast: "dark" },
 ];
 localStorage.setItem("coffees", JSON.stringify(coffees));
-const storedCoffees = localStorage.getItem("coffees");
-if (storedCoffees) {
-	const parsedCoffees = JSON.parse(storedCoffees);
-	// Modify the parsedCoffees array as needed
-	// ...
+let storedCoffees = localStorage.getItem("coffees");
 
-	// Store the updated data back in localStorage
-	localStorage.setItem("coffees", JSON.stringify(parsedCoffees));
-}
 // to remove a coffee
 // localStorage.removeItem("coffees");
 
-const addCoffee = (newCoffee) => {
-	const existingCoffees = JSON.parse(localStorage.getItem("coffees")) || [];
-	existingCoffees.push(newCoffee);
-	localStorage.setItem("coffees", JSON.stringify(existingCoffees));
-	renderCoffeeElement(existingCoffees, document.querySelector("#coffees"));
+const addCoffee = (coffeeName, roastType) => {
+	storedCoffees = JSON.parse(localStorage.getItem("coffees")) || [];
+	const newCoffee = { name: coffeeName, roast: roastType };
+	storedCoffees.push(newCoffee);
+	localStorage.setItem("coffees", JSON.stringify(newCoffee));
+	const storedCoffee = JSON.parse(localStorage.getItem("coffees"));
+	renderCoffeeElement(storedCoffee);
 };
 
 const renderCoffeeElement = (coffee) => {
@@ -120,9 +115,12 @@ const handleFilterEvents = (coffees) => {
 	updateCoffees(coffees);
 	handleFilterEvents(coffees);
 	const addBtn = document.querySelector("button[data-add]");
-	const userInput = document.querySelector("#add-form");
+	const nameInput = document.querySelector("#add-name");
+	const roastInput = document.querySelector(`#add-roast`);
 	addBtn.addEventListener("click", (e) => {
 		e.preventDefault();
-		addCoffee(userInput.value);
+		addCoffee(nameInput.value, roastInput.value);
+		nameInput.value = "";
+		roastInput.value = "";
 	});
 })();
