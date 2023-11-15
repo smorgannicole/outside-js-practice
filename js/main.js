@@ -50,14 +50,19 @@ const renderCoffeeElement = (coffee) => {
 	if (coffee.userGenerated) {
 		coffeeElement.addEventListener(`click`, e => {
 			coffeeElement.remove();
-			localStorage.removeItem();
+			removeFromLocalStorage(coffee.id);
 		})
 	}
 	document.querySelector("#coffees").prepend(coffeeElement);
-	// const deleteBtn = coffeeElement.querySelector("button[data-delete]");
-	// deleteBtn.addEventListener("click", (e) => {
-	// });
-	// return coffeeElement;
+	function removeFromLocalStorage(coffeeId) {
+		const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
+		const index = coffees.findIndex(coffee => coffee.id === coffeeId);
+
+		if (index !== -1) {
+			coffees.splice(index, 1);
+			localStorage.setItem("coffees", JSON.stringify(coffees));
+		}
+	}
 };
 
 const updateCoffees = () => {
