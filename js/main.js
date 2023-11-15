@@ -16,13 +16,19 @@ const coffees = [
 	{ id: 13, name: "Italian", roast: "dark" },
 	{ id: 14, name: "French", roast: "dark" },
 ];
+// localStorage.setItem("coffees", JSON.stringify(coffees));
+// const storedCoffees = localStorage.getItem("coffees");
 
 // to remove a coffee
 // localStorage.removeItem("coffees");
 
 const addCoffee = (coffeeName, roastType) => {
 	const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
-	const newCoffee = { name: coffeeName, roast: roastType };
+	const newCoffee = {
+		name: coffeeName,
+		roast: roastType,
+		userGenerated: true
+	};
 	coffees.push(newCoffee);
 	localStorage.setItem("coffees", JSON.stringify(coffees));
 	updateCoffees();
@@ -38,11 +44,18 @@ const renderCoffeeElement = (coffee) => {
 		<div class="col">
 			<p>${coffee.roast}</p>
 		</div>
+		${coffee.userGenerated ? `<button class="btn btn-danger" data-delete>Delete</button>` : ``}
+		${coffee.userGenerated ? `<button class="btn btn-secondary" data-edit>Edit</button>` : ``}
     `;
-	document.querySelector("#coffees").appendChild(coffeeElement);
+	if (coffee.userGenerated) {
+		coffeeElement.addEventListener(`click`, e => {
+			coffeeElement.remove();
+			localStorage.removeItem();
+		})
+	}
+	document.querySelector("#coffees").prepend(coffeeElement);
 	// const deleteBtn = coffeeElement.querySelector("button[data-delete]");
 	// deleteBtn.addEventListener("click", (e) => {
-	// 	coffeeElement.remove();
 	// });
 	// return coffeeElement;
 };
@@ -64,16 +77,19 @@ const updateCoffees = () => {
 	}
 
 	filteredCoffees = filteredCoffees.filter((coffee) => {
+		if (!searchValue) {
+			return true;
+		}
 		return coffee.name.toLowerCase().includes(searchValue.toLowerCase());
 	});
 
-	for (let coffee of filteredCoffees) {
-		renderCoffeeElement(coffee);
-	}
-
-	filteredCoffees = filteredCoffees.filter((coffee) => {
+	filteredCoffees = filteredCoffees.filter(coffee => {
+		if (!searchValue) {
+			return true;
+		}
 		return coffee.name.toLowerCase().includes(searchValue.toLowerCase());
 	});
+
 
 	for (let coffee of filteredCoffees) {
 		renderCoffeeElement(coffee);
@@ -103,18 +119,16 @@ const handleFilterEvents = (coffees) => {
 	});
 };
 
+const registerCoffees = (coffees) => {
+	if (localStorage.getItem("coffees")) {
+		return;
+	}
+	localStorage.setItem("coffees", JSON.stringify(coffees))
+}
+
 // MAIN
 (() => {
-	const registerCoffees = () => {
-		if (localStorage.getItem("coffees")) {
-			return;
-		} localStorage.setItem("coffees", JSON.stringify(coffees))
-	}
-	// window.addEventListener("load", () => {
-	// 	const storedCoffees = JSON.parse(localStorage.getItem("coffees")) || [];
-	// 	renderCoffeeElement(storedCoffees, document.querySelector("#coffees"));
-	// });
-	// renderCoffeeElement(coffees)
+	registerCoffees(coffees);
 	updateCoffees(coffees);
 	handleFilterEvents(coffees);
 	const addBtn = document.querySelector("button[data-add]");
