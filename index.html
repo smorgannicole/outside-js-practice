@@ -11,23 +11,21 @@
 </head>
 <body>
     <h1>Coffee!</h1>
-
     <form>
         <label for="roast-selection"></label>
         <select id="roast-selection">
-            <option>light</option>
-            <option>medium</option>
-            <option>dark</option>
+            <option selected value="">Roast Selection</option>
+            <option value="fantasy">Light</option>
+            <option value="horror">Medium</option>
+            <option value="mystery">Dark</option>
+            <option value="thriller">All</option>
         </select>
         <input id="submit" type="submit" />
     </form>
-    <form>
-        <h3><label for="search">Search:</label></h3>
-        <input type="text" name="search" id="search">
-        <div>
-            <button class="btn btn-primary" data-search>Search</button>
-        </div>
-    </form>
+    <div class="input-group input-group-md">
+        <input id="search" type="search" aria-label="Search coffees"
+               placeholder="Search coffees...">
+    </div>
 
     <section class="container">
         <div class="row">
@@ -67,6 +65,6 @@
 <!--        <tbody id="coffees"></tbody>-->
 <!--    </table>-->
 
-    <script src="./js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
 </body>
 </html>

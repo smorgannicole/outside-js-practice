@@ -1,4 +1,5 @@
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
+import { debounce } from './utils.js';
 const coffees = [
 	{ id: 1, name: "Light City", roast: "light" },
 	{ id: 2, name: "Half City", roast: "light" },
@@ -44,6 +45,25 @@ const updateCoffees = (e, target, selection) => {
 	const filteredCoffees = coffees.filter((coffee) => coffee.roast === selectedRoast);
 	renderCoffees(filteredCoffees, target);
 };
+
+const handleFilterEvents = (coffees) => {
+	const searchInput = document.querySelector("#search");
+	searchInput.addEventListener(
+		"input",
+		debounce((e) => {
+			// if (searchInput.value.toLowerCase() === "the") {
+			// 	return;
+			// }
+			updateCoffees(coffees);
+		}, 500)
+	);
+
+	const categoryInput = document.querySelector("#category");
+	categoryInput.addEventListener("change", (e) => {
+		updateCoffees(coffees);
+	});
+};
+
 
 // IIFE
 (() => {
