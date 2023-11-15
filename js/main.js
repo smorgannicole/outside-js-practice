@@ -43,12 +43,18 @@ const renderCoffeeElement = (coffee) => {
 		${coffee.userGenerated ? `<button class="btn btn-secondary" data-edit>Edit</button>` : ``}
     `;
 	const deleteButton = coffeeElement.querySelector(`button[data-delete]`);
-	const editButton = coffeeElement.querySelector(`button[data-edit]`)
+	const editButton = coffeeElement.querySelector(`button[data-edit]`);
 	if (deleteButton) {
 		deleteButton.addEventListener(`click`, e => {
 			coffeeElement.remove();
 			removeFromLocalStorage(coffee.id);
 		});
+	}
+	if (editButton) {
+		editButton.addEventListener('click', e=>{
+			renderEditForm(coffee, coffeeElement);
+			editButton.classList.add(`removePointer`);
+		})
 	}
 	document.querySelector("#coffees").prepend(coffeeElement);
 };
@@ -67,30 +73,34 @@ function removeFromLocalStorage(coffeeId) {
 		localStorage.setItem("coffees", JSON.stringify(coffees));
 	}
 }
-function showEditForm(coffee) {
+function renderEditForm(coffee, coffeeElement) {
 	const editForm = document.createElement("form");
 	editForm.innerHTML = `
             <label for="editName">Name:</label>
             <input type="text" id="editName" value="${coffee.name}" required>
             <label for="editRoast">Roast:</label>
             <input type="text" id="editRoast" value="${coffee.roast}" required>
-            <button type="submit" class="btn btn-primary" data-save>Edit</button>
+            <button type="submit" class="btn btn-primary" data-save>Save</button>
         `;
-
-	editForm.addEventListener("submit", (event) => {
-		event.preventDefault();
-
+	editForm.addEventListener("submit", e => {
+		e.preventDefault();
 		coffee.name = editForm.querySelector("#editName").value;
 		coffee.roast = editForm.querySelector("#editRoast").value;
 
-		coffeeElement.querySelector(".col:first-child p").textContent = coffee.name;
-		coffeeElement.querySelector(".col:last-child p").textContent = coffee.roast;
+		const editedName = coffeeElement.querySelector(".col:first-child p").textContent = coffee.name;
+		const editedRoast = coffeeElement.querySelector(".col:nth-child(2) p").textContent = coffee.roast;
 
-		updateLocalStorage(coffees);
-
-
-		editForm.remove();
+		const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
+		const newCoffee = {
+			name: editedName,
+			roast: editedRoast,
+			userEdited: true
+		};
+		coffees.push(newCoffee);
+		localStorage.setItem("coffees", JSON.stringify(coffees));
+		updateCoffees();
 	});
+	editForm.remove();
 
 	coffeeElement.after(editForm);
 }
