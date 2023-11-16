@@ -2,15 +2,15 @@ import { debounce } from './utils.js';
 import { formatMoney } from './utils.js';
 
 const coffees = [
-	{ id: 1, name: "Galactic Dawn", roast: "light", description: "An ethereal blend of celestial beans from the highest peaks of Colombia and Ethiopia, offering a cosmic awakening with radiant notes of sunrise citrus and starlit florals.", country: "Colombia and Ethiopia", price: formatMoney(30)},
-	{ id: 2, name: "Nebula Noir", roast: "light", description: "A Dark and enigmatic, this blend swirls together the depths of Indonesian and Guatemalan beans, unveiling a cosmic abyss of rich cocoa, interstellar spices, and a lingering cosmic whisper.", country: "Indonesia and Guatemala", price: formatMoney(30) },
-	{ id: 3, name: "Stellar Symphony", roast: "light", description: "Crafted from the harmonious collision of beans from Costa Rica and Kenya, this cosmic blend harmonizes bright, fruity supernovas with a hint of planetary spice.", country: "Costa Rica and Kenya", price: formatMoney(30) },
-	{ id: 4, name: "Aurora Elation", roast: "medium", description: "Inspired by the dancing lights of the Arctic, this blend melds beans from Iceland and Brazil, resulting in a cosmic cup swirling with caramelized aurora hues and Icelandic purity.", country: "Iceland and Brazil", price: formatMoney(30) },
-	{ id: 5, name: "Celestial Ember", roast: "medium", description: "Embrace the warmth of this cosmic blend, merging beans from Sumatra and Mexico, evoking cosmic embers with dark chocolate richness and smoky constellations.", country: "Sumatra and Mexico", price: formatMoney(30) },
-	{ id: 6, name: "Lunar Eclipse", roast: "medium", description: "A celestial event in a cup, combining the mystique of Ethiopian and Hawaiian beans, revealing a lunar-inspired harmony of floral moonbeams and tropical whispers.", country: "Ethiopia and Hawaii", price: formatMoney(30) },
+	{ id: 1, name: "Galactic Dawn", roast: "light", description: "An ethereal blend of celestial beans and offers a cosmic awakening with radiant notes of sunrise citrus and starlit florals.", country: "Colombia and Ethiopia", price: formatMoney(30)},
+	{ id: 2, name: "Nebula Noir", roast: "light", description: "Dark and enigmatic, this blend unveils a cosmic abyss of rich cocoa, interstellar spices, and a lingering cosmic whisper.", country: "Indonesia and Guatemala", price: formatMoney(30) },
+	{ id: 3, name: "Stellar Symphony", roast: "light", description: "Crafted from Costa Rica and Kenya, this blend emotes bright, fruity supernovas with a hint of planetary spice.", country: "Costa Rica and Kenya", price: formatMoney(30) },
+	{ id: 4, name: "Aurora Elation", roast: "medium", description: "Inspired by the dancing lights of the Arctic, this blend results in a cosmic cup swirling with caramelized aurora hues and Icelandic purity.", country: "Iceland and Brazil", price: formatMoney(30) },
+	{ id: 5, name: "Celestial Ember", roast: "medium", description: "Embrace the warmth of this cosmic blend, evoking cosmic embers with dark chocolate richness and smoky constellations.", country: "Sumatra and Mexico", price: formatMoney(30) },
+	{ id: 6, name: "Lunar Eclipse", roast: "medium", description: "A celestial event in a cup, revealing a lunar-inspired harmony of floral moonbeams and tropical whispers.", country: "Ethiopia and Hawaii", price: formatMoney(30) },
 	{ id: 7, name: "Supernova Spice", roast: "dark", description: "Bursting with cosmic energy, this blend combines Indian and Jamaican beans, igniting the palate with interstellar spices and a fiery caffeine rush.", country: "India and Jamaica", price: formatMoney(30) },
-	{ id: 8, name: "Cosmic Caramel Comet", roast: "dark", description: "A cosmic collision of Brazilian and Colombian beans, leaving a trail of caramel comet dust across the taste buds with a sweet, lingering cosmic embrace.", country: "Brazil and Colombia", price: formatMoney(30) },
-	{ id: 9, name: "Solar Flare Fusion", roast: "dark", description: "Inspired by solar phenomena, this fusion of beans from Guatemala and Peru radiates with bright acidity, citrusy flares, and a solar-powered zest.", country: "Guatemala and Peru", price: formatMoney(30) },
+	{ id: 8, name: "Cosmic Caramel Comet", roast: "dark", description: "A cosmic collision of Brazilian and Colombian beans, leaving a trail of caramel comet dust with a sweet, lingering cosmic embrace.", country: "Brazil and Colombia", price: formatMoney(30) },
+	{ id: 9, name: "Solar Flare Fusion", roast: "dark", description: "Inspired by solar phenomena, this fusion of beans from Guatemala and Peru radiates with bright acidity, citrus flares, and zest.", country: "Guatemala and Peru", price: formatMoney(30) },
 	{ id: 10, name: "Interstellar Infusion", roast: "dark", description: "A journey through the cosmos with beans from Kenya and Mexico, blending cosmic flavors of tropical fruits and high-altitude sweetness.", country: "Kenya and Mexico", price: formatMoney(30) },
 	{ id: 11, name: "Andromeda Awakening", roast: "dark", description: "Named after the distant galaxy, this blend unites Ethiopian and Tanzanian beans, offering a cosmic revelation of vibrant florals and cosmic energy.", country: "Ethiopia and Tanzania", price: formatMoney(30) },
 	{ id: 12, name: "Cosmic Cocoa Cloud", roast: "dark", description: "From the depths of Brazil and Vietnam, a cosmic cloud of chocolatey richness and smoky whispers, evoking the essence of a celestial voyage.", country: "Brazil and Vietnam", price: formatMoney(30) },
@@ -45,11 +45,12 @@ const renderCoffeeElement = (coffee) => {
 					<h5 class="card-title">${coffee.name}</h5>
 					<h6 class="card-subtitle mb-2 text-body-secondary">${coffee.roast}</h6>
 					<p style="font-weight: lighter">${coffee.country}</p>
+					${coffee.userGenerated ? `<button class="btn btn-primary add" data-delete>Delete</button>` : ``}
+					${coffee.userGenerated ? `<button class="btn btn-secondary" data-edit>Edit</button>` : ``}
 				</div>
   			</div>
 		</div>
-		${coffee.userGenerated ? `<button class="btn btn-danger" data-delete>Delete</button>` : ``}
-		${coffee.userGenerated ? `<button class="btn btn-secondary" data-edit>Edit</button>` : ``}
+	
     `;
 	const deleteButton = coffeeElement.querySelector(`button[data-delete]`);
 	const editButton = coffeeElement.querySelector(`button[data-edit]`);
@@ -65,6 +66,10 @@ const renderCoffeeElement = (coffee) => {
 			editButton.classList.add(`removePointer`);
 		})
 	}
+	const innerCoffeeElement = coffeeElement.querySelector('.card');
+	innerCoffeeElement.addEventListener(`click`, e => {
+		innerCoffeeElement.classList.toggle(`flipped`);
+	})
 	document.querySelector("#coffees").prepend(coffeeElement);
 };
 const registerCoffees = (coffees) => {
@@ -156,7 +161,7 @@ const updateCoffees = () => {
 	// }
 	// document.querySelector("#coffees").appendChild(coffeesFragment);
 };
-const handleFilterEvents = (coffees) => {
+const handleFilterEvents = () => {
 	const searchInput = document.querySelector("#search");
 	searchInput.addEventListener(
 		"input",
@@ -164,35 +169,21 @@ const handleFilterEvents = (coffees) => {
 			if (searchInput.value.toLowerCase() === "the") {
 				return;
 			}
-			updateCoffees(coffees);
+			updateCoffees();
 		}, 500)
 	);
 
 	const roastSelectionInput = document.querySelector("#roast-selection");
 	roastSelectionInput.addEventListener("change", (e) => {
-		updateCoffees(coffees);
+		updateCoffees();
 	});
 };
-const flipDaCard = (daCards) => {
-	for (let daCard of daCards) {
-		daCard.addEventListener(`click`, e => {
-			daCard.classList.toggle(`flipped`);
-		})
-	}
-}
-
-
-
-
-
-
-
 
 // MAIN
 (() => {
 	registerCoffees(coffees);
-	updateCoffees(coffees);
-	handleFilterEvents(coffees);
+	updateCoffees();
+	handleFilterEvents();
 	const addBtn = document.querySelector("button[data-add]");
 	const nameInput = document.querySelector("#add-name");
 	const roastInput = document.querySelector(`#add-roast`);
@@ -202,6 +193,4 @@ const flipDaCard = (daCards) => {
 		nameInput.value = "";
 		roastInput.value = "";
 	});
-	const card = document.querySelectorAll(`.flipped`);
-	flipDaCard(card);
 })();

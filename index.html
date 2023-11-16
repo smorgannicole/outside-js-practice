@@ -29,7 +29,7 @@
                         <a class="nav-link" href="#add-coffees">Create Your Own Blend</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="#about-us">About Us</a>
                     </li>
                 </ul>
             </div>
@@ -84,9 +84,9 @@
             </div>
         </div>
     </section>
-    <section class="container" id="add-coffees">
+    <section class="container">
         <div class="row">
-            <div class="col d-flex justify-content-center">
+            <div class="col d-flex justify-content-center" id="add-coffees">
                 <h2 class="add-sub-head">Create Your Own Blend</h2>
             </div>
         </div>
@@ -96,16 +96,50 @@
             <div class="col">
                 <form id="add-form">
                     <h3><label class="form-label" for="add-name">Coffee Name</label></h3>
-                    <input class="form-control" type="text" name="add-name" id="add-name" placeholder="Create Coffee Name">
+                    <input class="form-control mb-5" type="text" name="add-name" id="add-name" placeholder="Create Coffee Name">
                     <h3><label class="form-label" for="add-roast">Roast Type</label></h3>
                     <input class="form-control" type="text" name="add-roast" id="add-roast" placeholder="Create Roast Type">
-                    <div>
-                        <button class="btn btn-outline-success add" data-add>Create Coffee</button>
-                    </div>
+                    <button class="btn btn-outline-success add mb-3" data-add
+                            onclick="window.location.href = '#coffees-container';">
+                        Create Coffee
+                    </button>
                 </form>
             </div>
         </div>
     </section>
+    <section class="container" id="about-us">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <h2 class="add-sub-head">About Us</h2>
+            </div>
+        </div>
+    </section>
+    <section class="container about-us">
+        <div class="row flex-column">
+            <div class="col d-flex justify-content-center">
+                <h3 class="border-b">Morgan & Nathan - Our Founders</h3>
+            </div>
+            <div class="col">
+                <p>Welcome to Cosmic Coffee, where passion for great coffee meets an out-of-this-world experience! Founded by Morgan and Nathan, our journey began with a shared love for the rich aroma and community spirit that coffee fosters.</p>
+            </div>
+            <div class="col">
+                <p>Morgan: A visionary with an insatiable curiosity for the intricacies of coffee, Morgan’s journey into the world of beans started during travels across different continents. Her fascination with the cultural nuances and the artistry behind brewing methods laid the foundation for Cosmic Coffee's commitment to global flavors and sustainable sourcing.</p>
+            </div>
+            <div class="col">
+                <p>Nathan: A seasoned entrepreneur and coffee aficionado, Nathan brings his expertise in business strategy and a relentless pursuit of excellence to every cup. His background in sustainable practices and dedication to ethical sourcing shapes Cosmic Coffee’s mission to create an impact beyond just serving exceptional brews.</p>
+            </div>
+            <div class="col">
+                <p>Our Cosmic Vision: Beyond crafting exquisite blends, we aim to create a cosmic community. From supporting local growers to nurturing a space where conversations flow as easily as the coffee, every cup at Cosmic Coffee embodies our commitment to fostering connections.</p>
+            </div>
+        </div>
+    </section>
+    <footer class="container footer">
+        <div class="row">
+            <div class="col">
+                Join Us on this Cosmic Journey: Whether you're a seasoned coffee connoisseur or just beginning your exploration, we invite you to join Morgan, Nathan, and the entire Cosmic Coffee family on this cosmic odyssey. Together, let's savor every sip and celebrate the cosmic connections that unite us.
+            </div>
+        </div>
+    </footer>
 
     <script type="module" src="./js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

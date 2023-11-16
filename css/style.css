@@ -53,7 +53,7 @@ h2.coffee-sub-head {
 ul.nav {
     --bs-nav-link-color: #000;
     --bs-nav-link-hover-color: var(--clr-cc1);
-    padding-bottom: 300px;
+    padding-bottom: 250px;
 }
 .coffee-container {
     display: flex;
@@ -62,6 +62,7 @@ ul.nav {
     background-image: linear-gradient(to bottom right, var(--clr-bg1), var(--clr-bg2), var(--clr-cc7), var(--clr-bg4));
     border-radius: 20px;
     box-shadow: 10px 10px 5px var(--clr-cc2);
+    margin-bottom: 200px;
 }
 .custom-form {
     margin: 20px;
@@ -208,10 +209,10 @@ div#coffees {
     padding: 30px 20px;
 }
 h2.add-sub-head {
-    margin-top: 200px;
+    margin-top: 100px;
     margin-bottom: 80px;
 }
-.add-container {
+section.add-container {
     display: flex;
     flex-direction: column;
     max-height: 100dvh;
@@ -220,6 +221,24 @@ h2.add-sub-head {
     box-shadow: 10px 10px 5px var(--clr-cc2);
     margin-bottom: 200px;
     padding: 20px 40px;
+}
+section.about-us {
+    display: flex;
+    flex-direction: column;
+    max-height: 100dvh;
+    background-image: linear-gradient(to bottom right, var(--clr-bg1), var(--clr-bg2), var(--clr-cc7), var(--clr-bg4));
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px var(--clr-cc2);
+    margin-bottom: 200px;
+    padding: 20px 40px;
+}
+footer.footer {
+    display: flex;
+    flex-direction: column;
+    max-height: 100dvh;
+}
+button.delete {
+
 }
 .removePointer {
     pointer-events: none;
