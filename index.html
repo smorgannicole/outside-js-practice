@@ -23,10 +23,10 @@
             <div class="col">
                 <ul class="nav justify-content-between">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Coffees</a>
+                        <a class="nav-link active" aria-current="page" href="#coffees-container">Coffees</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Your Own Blend</a>
+                        <a class="nav-link" href="#add-coffees">Create Your Own Blend</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About Us</a>
@@ -35,11 +35,16 @@
             </div>
         </div>
     </section>
-    <section class="container coffee-container">
+    <section class="container" id="coffees-container">
         <div class="row">
-            <div class="col">
-
-
+            <div class="col d-flex justify-content-center">
+                <h2 class="coffee-sub-head">Coffees</h2>
+            </div>
+        </div>
+    </section>
+    <section class="container coffee-container">
+        <div class="row justify-content-between border-b">
+            <div class="col flex-grow-0 flex-shrink-1 p-0">
                 <form class="custom-form">
                     <label for="roast-selection" class="custom-label"></label>
                     <div class="custom-select">
@@ -53,7 +58,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col">
+            <div class="col flex-grow-0 flex-shrink-1">
                 <div class="input-group input-group-md">
                     <nav class="navbar bg-body-tertiary">
                         <div class="container-fluid search-box">
@@ -67,16 +72,8 @@
             </div>
         </div>
         <div class="row">
-                <div class="col">
-                    <h3>NAME</h3>
-                </div>
-                <div class="col">
-                    <h3>ROAST</h3>
-                </div>
-        </div>
-        <div class="row">
             <div class="col">
-                <div id="coffees">
+                <div id="coffees" class="d-flex flex-wrap justify-content-center gap-3">
                     <!--            <div class="col">-->
                     <!--                <p>${coffee.name}</p>-->
                     <!--            </div>-->
@@ -87,28 +84,21 @@
             </div>
         </div>
     </section>
-    <section class="container">
+    <section class="container" id="add-coffees">
         <div class="row">
-
+            <div class="col d-flex justify-content-center">
+                <h2 class="add-sub-head">Create Your Own Blend</h2>
+            </div>
         </div>
     </section>
-
-
-
-    <section class="container">
+    <section class="container add-container">
         <div class="row">
-            <div class="col">
-
-            </div>
-            <div class="col">
-
-            </div>
             <div class="col">
                 <form id="add-form">
                     <h3><label class="form-label" for="add-name">Coffee Name</label></h3>
-                    <input class="form-control" type="text" name="add-name" id="add-name" placeholder="Enter Coffee Name">
+                    <input class="form-control" type="text" name="add-name" id="add-name" placeholder="Create Coffee Name">
                     <h3><label class="form-label" for="add-roast">Roast Type</label></h3>
-                    <input class="form-control" type="text" name="add-roast" id="add-roast" placeholder="Enter Roast Type">
+                    <input class="form-control" type="text" name="add-roast" id="add-roast" placeholder="Create Roast Type">
                     <div>
                         <button class="btn btn-primary add" data-add>Add Coffee</button>
                     </div>
