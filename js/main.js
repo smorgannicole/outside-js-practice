@@ -1,19 +1,19 @@
 import { debounce } from './utils.js';
 const coffees = [
-	{ id: 1, name: "Galactic Dawn", roast: "light" },
-	{ id: 2, name: "Nebula Noir", roast: "light" },
-	{ id: 3, name: "Stellar Symphony", roast: "light" },
-	{ id: 4, name: "Aurora Elation", roast: "medium" },
-	{ id: 5, name: "Celestial Ember", roast: "medium" },
-	{ id: 6, name: "Lunar Eclipse", roast: "medium" },
-	{ id: 7, name: "Supernova Spice", roast: "dark" },
-	{ id: 8, name: "Cosmic Caramel Comet", roast: "dark" },
-	{ id: 9, name: "Solar Flare Fusion", roast: "dark" },
-	{ id: 10, name: "Interstellar Infusion", roast: "dark" },
-	{ id: 11, name: "Andromeda Awakening", roast: "dark" },
-	{ id: 12, name: "Cosmic Cocoa Cloud", roast: "dark" },
-	{ id: 13, name: "Starlight Serenade", roast: "dark" },
-	{ id: 14, name: "Cosmic Origin Odyssey", roast: "dark" },
+	{ id: 1, name: "Galactic Dawn", roast: "light", description: "An ethereal blend of celestial beans from the highest peaks of Colombia and Ethiopia, offering a cosmic awakening with radiant notes of sunrise citrus and starlit florals."},
+	{ id: 2, name: "Nebula Noir", roast: "light", description: "A Dark and enigmatic, this blend swirls together the depths of Indonesian and Guatemalan beans, unveiling a cosmic abyss of rich cocoa, interstellar spices, and a lingering cosmic whisper." },
+	{ id: 3, name: "Stellar Symphony", roast: "light", description: "Crafted from the harmonious collision of beans from Costa Rica and Kenya, this cosmic blend harmonizes bright, fruity supernovas with a hint of planetary spice." },
+	{ id: 4, name: "Aurora Elation", roast: "medium", description: "Inspired by the dancing lights of the Arctic, this blend melds beans from Iceland and Brazil, resulting in a cosmic cup swirling with caramelized aurora hues and Icelandic purity." },
+	{ id: 5, name: "Celestial Ember", roast: "medium", description: "Embrace the warmth of this cosmic blend, merging beans from Sumatra and Mexico, evoking cosmic embers with dark chocolate richness and smoky constellations." },
+	{ id: 6, name: "Lunar Eclipse", roast: "medium", description: "A celestial event in a cup, combining the mystique of Ethiopian and Hawaiian beans, revealing a lunar-inspired harmony of floral moonbeams and tropical whispers." },
+	{ id: 7, name: "Supernova Spice", roast: "dark", description: "Bursting with cosmic energy, this blend combines Indian and Jamaican beans, igniting the palate with interstellar spices and a fiery caffeine rush." },
+	{ id: 8, name: "Cosmic Caramel Comet", roast: "dark", description: "A cosmic collision of Brazilian and Colombian beans, leaving a trail of caramel comet dust across the taste buds with a sweet, lingering cosmic embrace." },
+	{ id: 9, name: "Solar Flare Fusion", roast: "dark", description: "Inspired by solar phenomena, this fusion of beans from Guatemala and Peru radiates with bright acidity, citrusy flares, and a solar-powered zest." },
+	{ id: 10, name: "Interstellar Infusion", roast: "dark", description: "A journey through the cosmos with beans from Kenya and Mexico, blending cosmic flavors of tropical fruits and high-altitude sweetness." },
+	{ id: 11, name: "Andromeda Awakening", roast: "dark", description: "Named after the distant galaxy, this blend unites Ethiopian and Tanzanian beans, offering a cosmic revelation of vibrant florals and cosmic energy." },
+	{ id: 12, name: "Cosmic Cocoa Cloud", roast: "dark", description: "From the depths of Brazil and Vietnam, a cosmic cloud of chocolatey richness and smoky whispers, evoking the essence of a celestial voyage." },
+	{ id: 13, name: "Starlight Serenade", roast: "dark", description: "Inspired by cosmic melodies, this fusion of Nicaraguan and Thai beans swirls with celestial notes of nutty stars and a harmonious cosmic symphony." },
+	{ id: 14, name: "Cosmic Origin Odyssey", roast: "dark", description: "Embark on a journey through cosmic origins with rotating single-origin beans, unveiling the cosmic stories and flavors of celestial realms." },
 ];
 
 const addCoffee = (coffeeName, roastType) => {
@@ -33,11 +33,16 @@ const renderCoffeeElement = (coffee) => {
 	const coffeeElement = document.createElement("div");
 	coffeeElement.classList.add(`d-flex`)
 	coffeeElement.innerHTML = `
-		<div class="card" style="width: 18rem;">
-  			<div class="card-body">
-				<h5 class="card-title">${coffee.name}</h5>
-				<h6 class="card-subtitle mb-2 text-body-secondary">${coffee.roast}</h6>
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		<div class="card flipped" style="width: 18rem;">
+  			<div class="card-body card-inner">
+  				<div class="card-front d-flex flex-column align-items-start p-4">
+  					<p>${coffee.description}</p>
+				</div>
+  				<div class="card-back d-flex flex-column align-items-start p-4">
+					<h5 class="card-title">${coffee.name}</h5>
+					<h6 class="card-subtitle mb-2 text-body-secondary">${coffee.roast}</h6>
+					<p style="font-weight: lighter">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
   			</div>
 		</div>
 		${coffee.userGenerated ? `<button class="btn btn-danger" data-delete>Delete</button>` : ``}
@@ -165,7 +170,13 @@ const handleFilterEvents = (coffees) => {
 		updateCoffees(coffees);
 	});
 };
-
+const flipDaCard = (daCards) => {
+	for (let daCard of daCards) {
+		daCard.addEventListener(`click`, e => {
+			daCard.classList.toggle(`flipped`);
+		})
+	}
+}
 
 
 
@@ -188,4 +199,6 @@ const handleFilterEvents = (coffees) => {
 		nameInput.value = "";
 		roastInput.value = "";
 	});
+	const card = document.querySelectorAll(`.flipped`);
+	flipDaCard(card);
 })();
