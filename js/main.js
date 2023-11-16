@@ -50,7 +50,7 @@ const renderCoffeeElement = (coffee) => {
 						<h6 class="card-subtitle mb-2 text-body-secondary" id="roast-name">${coffee.roast}</h6>
 						<p style="font-weight: lighter">${coffee.country}</p>
 					</div>
-					<div class="d-flex btn-parent">
+					<div class="btn-parent">
 						${coffee.userGenerated ? `<button class="btn btn-primary delete-btn" data-delete>Delete</button>` : ``}
 						${coffee.userGenerated ? `<button class="btn btn-secondary edit-btn" data-edit>Edit</button>` : ``}
 					</div>
@@ -101,17 +101,33 @@ function removeFromLocalStorage(coffeeId) {
 function renderEditForm(coffee, coffeeElement) {
 	const editForm = document.createElement("form");
 	editForm.innerHTML = `
-            <label for="editName">Name:</label>
-            <input type="text" id="editName" value="${coffee.name}" required>
-            <label for="editRoast">Roast:</label>
-            <input type="text" id="editRoast" value="${coffee.roast}" required>
-            <label for="editCountry">Country:</label>
-            <input type="text" id="editCountry" value="${coffee.country}" required>
-            <label for="editDescription">Description:</label>
-            <input type="text" id="editDescription" value="${coffee.description}" required>
-            <label for="editPrice">Price</label>
-            <input type="text" id="editPrice" value="${coffee.price}" required>
-            <button type="submit" class="btn btn-primary" data-save>Save</button>
+		<div class="container edit-container">
+			<div class="row flex-column gap-1">
+				<div class="col">
+					<label for="editName">Name </label>
+					<input class="form-control me-2" type="text" id="editName" value="${coffee.name}" required>
+				</div>
+				<div class="col">
+					<label for="editRoast">Roast </label>
+					<input class="form-control me-2" type="text" id="editRoast" value="${coffee.roast}" required>
+				</div>
+				<div class="col">
+					<label for="editCountry">Country </label>
+					<input class="form-control me-2" type="text" id="editCountry" value="${coffee.country}" required>
+				</div>
+				<div class="col">
+					<label for="editDescription">Description </label>
+					<input class="form-control me-2" type="text" id="editDescription" value="${coffee.description}" required>
+				</div>
+				<div class="col">
+					<label for="editPrice">Price </label>
+					<input class="form-control me-2" type="text" id="editPrice" value="${coffee.price}" required>
+				</div>
+				<div class="col">
+					<button type="submit" class="btn btn-primary save-btn" data-save>Save</button>
+				</div>
+			</div>
+		</div>
         `;
 	editForm.addEventListener("submit", e => {
 		e.preventDefault();
@@ -201,6 +217,26 @@ const handleFilterEvents = () => {
 	});
 };
 
+
+
+
+
+function reveal() {
+	let reveals = document.querySelectorAll(".reveal");
+	for (let i = 0; i < reveals.length; i++) {
+		let windowHeight = window.innerHeight;
+		let elementTop = reveals[i].getBoundingClientRect().top;
+		let elementVisible = 150;
+		if (elementTop < windowHeight - elementVisible) {
+			reveals[i].classList.add("active");
+		} else {
+			reveals[i].classList.remove("active");
+		}
+	}
+}
+//
+// let myTimeout = setTimeout(function, 10000);
+
 // MAIN
 (() => {
 	registerCoffees(coffees);
@@ -221,9 +257,5 @@ const handleFilterEvents = () => {
 		descriptionInput.value = "";
 		priceInput.value = "";
 	});
-	// const deleteBtn = document.querySelector(`button.delete-btn`);
-	// deleteBtn.addEventListener(`hover`, e => {
-	// 	const coffeeElement = document.createElement("div");
-	// 	coffeeElement.classList.remove(`flipped`);
-	// })
+	window.addEventListener("scroll", reveal);
 })();
