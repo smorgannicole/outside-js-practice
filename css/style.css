@@ -243,7 +243,7 @@ button.edit-btn {
     aspect-ratio: 4/1;
 }
 .btn-parent {
-    gap: 110px;
+
 }
 .removePointer {
     pointer-events: none;

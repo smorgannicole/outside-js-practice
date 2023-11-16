@@ -18,13 +18,16 @@ const coffees = [
 	{ id: 14, name: "Cosmic Origin Odyssey", roast: "dark", description: "Embark on a journey through cosmic origins with rotating single-origin beans, unveiling the cosmic stories and flavors of celestial realms.", country: "Brazil and Kenya", price: formatMoney(30) },
 ];
 
-const addCoffee = (coffeeName, roastType) => {
+const addCoffee = (coffeeName, roastType, country, description, price) => {
 	const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
+	price = formatMoney(parseFloat(price));
 	const newCoffee = {
 		name: coffeeName,
 		roast: roastType,
+		country: country,
+		description: description,
+		price: price,
 		userGenerated: true,
-		id: Date.now()
 	};
 	coffees.push(newCoffee);
 	localStorage.setItem("coffees", JSON.stringify(coffees));
@@ -102,25 +105,35 @@ function renderEditForm(coffee, coffeeElement) {
             <input type="text" id="editName" value="${coffee.name}" required>
             <label for="editRoast">Roast:</label>
             <input type="text" id="editRoast" value="${coffee.roast}" required>
+            <label for="editCountry">Country:</label>
+            <input type="text" id="editCountry" value="${coffee.country}" required>
+            <label for="editDescription">Description:</label>
+            <input type="text" id="editDescription" value="${coffee.description}" required>
+            <label for="editPrice">Price</label>
+            <input type="text" id="editPrice" value="${coffee.price}" required>
             <button type="submit" class="btn btn-primary" data-save>Save</button>
         `;
 	editForm.addEventListener("submit", e => {
 		e.preventDefault();
 		const oldCoffeeName = coffee.name;
 		let coffees = JSON.parse(localStorage.getItem("coffees")) || [];
-		coffees = coffees.filter(coffee=> coffee.name !== oldCoffeeName);
 
 		coffee.name = editForm.querySelector("#editName").value;
 		coffee.roast = editForm.querySelector("#editRoast").value;
+		coffee.country = editForm.querySelector("#editCountry").value;
+		coffee.description = editForm.querySelector("#editDescription").value;
+		coffee.price = editForm.querySelector("#editPrice").value;
 
 		coffees.push({
 			name: coffee.name,
 			roast: coffee.roast,
 			country: coffee.country,
+			description: coffee.description,
+			price: coffee.price,
 			userGenerated: true
 		});
-		const editedName = coffeeElement.querySelector("#coffee-name").textContent = coffee.name;
-		const editedRoast = coffeeElement.querySelector("#roast-name").textContent = coffee.roast;
+
+		addCoffee(coffee.name, coffee.roast, coffee.country, coffee.description, coffee.price)
 		localStorage.setItem("coffees", JSON.stringify(coffees));
 		editForm.remove();
 	});
@@ -196,11 +209,17 @@ const handleFilterEvents = () => {
 	const addBtn = document.querySelector("button[data-add]");
 	const nameInput = document.querySelector("#add-name");
 	const roastInput = document.querySelector(`#add-roast`);
+	const countryInput = document.querySelector(`#country-name`);
+	const descriptionInput = document.querySelector(`#description`);
+	const priceInput = document.querySelector(`#price`);
 	addBtn.addEventListener("click", (e) => {
 		e.preventDefault();
-		addCoffee(nameInput.value, roastInput.value);
+		addCoffee(nameInput.value, roastInput.value, countryInput.value, descriptionInput.value, priceInput.value);
 		nameInput.value = "";
 		roastInput.value = "";
+		countryInput.value = "";
+		descriptionInput.value = "";
+		priceInput.value = "";
 	});
 	// const deleteBtn = document.querySelector(`button.delete-btn`);
 	// deleteBtn.addEventListener(`hover`, e => {
