@@ -2,20 +2,20 @@ import { debounce } from './utils.js';
 import { formatMoney } from './utils.js';
 
 const coffees = [
-	{ id: 1, name: "Galactic Dawn", roast: "light", description: "An ethereal blend of celestial beans from the highest peaks of Colombia and Ethiopia, offering a cosmic awakening with radiant notes of sunrise citrus and starlit florals.", price: formatMoney(30)},
-	{ id: 2, name: "Nebula Noir", roast: "light", description: "A Dark and enigmatic, this blend swirls together the depths of Indonesian and Guatemalan beans, unveiling a cosmic abyss of rich cocoa, interstellar spices, and a lingering cosmic whisper.", price: formatMoney(30) },
-	{ id: 3, name: "Stellar Symphony", roast: "light", description: "Crafted from the harmonious collision of beans from Costa Rica and Kenya, this cosmic blend harmonizes bright, fruity supernovas with a hint of planetary spice.", price: formatMoney(30) },
-	{ id: 4, name: "Aurora Elation", roast: "medium", description: "Inspired by the dancing lights of the Arctic, this blend melds beans from Iceland and Brazil, resulting in a cosmic cup swirling with caramelized aurora hues and Icelandic purity.", price: formatMoney(30) },
-	{ id: 5, name: "Celestial Ember", roast: "medium", description: "Embrace the warmth of this cosmic blend, merging beans from Sumatra and Mexico, evoking cosmic embers with dark chocolate richness and smoky constellations.", price: formatMoney(30) },
-	{ id: 6, name: "Lunar Eclipse", roast: "medium", description: "A celestial event in a cup, combining the mystique of Ethiopian and Hawaiian beans, revealing a lunar-inspired harmony of floral moonbeams and tropical whispers.", price: formatMoney(30) },
-	{ id: 7, name: "Supernova Spice", roast: "dark", description: "Bursting with cosmic energy, this blend combines Indian and Jamaican beans, igniting the palate with interstellar spices and a fiery caffeine rush.", price: formatMoney(30) },
-	{ id: 8, name: "Cosmic Caramel Comet", roast: "dark", description: "A cosmic collision of Brazilian and Colombian beans, leaving a trail of caramel comet dust across the taste buds with a sweet, lingering cosmic embrace.", price: formatMoney(30) },
-	{ id: 9, name: "Solar Flare Fusion", roast: "dark", description: "Inspired by solar phenomena, this fusion of beans from Guatemala and Peru radiates with bright acidity, citrusy flares, and a solar-powered zest.", price: formatMoney(30) },
-	{ id: 10, name: "Interstellar Infusion", roast: "dark", description: "A journey through the cosmos with beans from Kenya and Mexico, blending cosmic flavors of tropical fruits and high-altitude sweetness.", price: formatMoney(30) },
-	{ id: 11, name: "Andromeda Awakening", roast: "dark", description: "Named after the distant galaxy, this blend unites Ethiopian and Tanzanian beans, offering a cosmic revelation of vibrant florals and cosmic energy.", price: formatMoney(30) },
-	{ id: 12, name: "Cosmic Cocoa Cloud", roast: "dark", description: "From the depths of Brazil and Vietnam, a cosmic cloud of chocolatey richness and smoky whispers, evoking the essence of a celestial voyage.", price: formatMoney(30) },
-	{ id: 13, name: "Starlight Serenade", roast: "dark", description: "Inspired by cosmic melodies, this fusion of Nicaraguan and Thai beans swirls with celestial notes of nutty stars and a harmonious cosmic symphony.", price: formatMoney(30) },
-	{ id: 14, name: "Cosmic Origin Odyssey", roast: "dark", description: "Embark on a journey through cosmic origins with rotating single-origin beans, unveiling the cosmic stories and flavors of celestial realms.", price: formatMoney(30) },
+	{ id: 1, name: "Galactic Dawn", roast: "light", description: "An ethereal blend of celestial beans from the highest peaks of Colombia and Ethiopia, offering a cosmic awakening with radiant notes of sunrise citrus and starlit florals.", country: "Colombia and Ethiopia", price: formatMoney(30)},
+	{ id: 2, name: "Nebula Noir", roast: "light", description: "A Dark and enigmatic, this blend swirls together the depths of Indonesian and Guatemalan beans, unveiling a cosmic abyss of rich cocoa, interstellar spices, and a lingering cosmic whisper.", country: "Indonesia and Guatemala", price: formatMoney(30) },
+	{ id: 3, name: "Stellar Symphony", roast: "light", description: "Crafted from the harmonious collision of beans from Costa Rica and Kenya, this cosmic blend harmonizes bright, fruity supernovas with a hint of planetary spice.", country: "Costa Rica and Kenya", price: formatMoney(30) },
+	{ id: 4, name: "Aurora Elation", roast: "medium", description: "Inspired by the dancing lights of the Arctic, this blend melds beans from Iceland and Brazil, resulting in a cosmic cup swirling with caramelized aurora hues and Icelandic purity.", country: "Iceland and Brazil", price: formatMoney(30) },
+	{ id: 5, name: "Celestial Ember", roast: "medium", description: "Embrace the warmth of this cosmic blend, merging beans from Sumatra and Mexico, evoking cosmic embers with dark chocolate richness and smoky constellations.", country: "Sumatra and Mexico", price: formatMoney(30) },
+	{ id: 6, name: "Lunar Eclipse", roast: "medium", description: "A celestial event in a cup, combining the mystique of Ethiopian and Hawaiian beans, revealing a lunar-inspired harmony of floral moonbeams and tropical whispers.", country: "Ethiopia and Hawaii", price: formatMoney(30) },
+	{ id: 7, name: "Supernova Spice", roast: "dark", description: "Bursting with cosmic energy, this blend combines Indian and Jamaican beans, igniting the palate with interstellar spices and a fiery caffeine rush.", country: "India and Jamaica", price: formatMoney(30) },
+	{ id: 8, name: "Cosmic Caramel Comet", roast: "dark", description: "A cosmic collision of Brazilian and Colombian beans, leaving a trail of caramel comet dust across the taste buds with a sweet, lingering cosmic embrace.", country: "Brazil and Colombia", price: formatMoney(30) },
+	{ id: 9, name: "Solar Flare Fusion", roast: "dark", description: "Inspired by solar phenomena, this fusion of beans from Guatemala and Peru radiates with bright acidity, citrusy flares, and a solar-powered zest.", country: "Guatemala and Peru", price: formatMoney(30) },
+	{ id: 10, name: "Interstellar Infusion", roast: "dark", description: "A journey through the cosmos with beans from Kenya and Mexico, blending cosmic flavors of tropical fruits and high-altitude sweetness.", country: "Kenya and Mexico", price: formatMoney(30) },
+	{ id: 11, name: "Andromeda Awakening", roast: "dark", description: "Named after the distant galaxy, this blend unites Ethiopian and Tanzanian beans, offering a cosmic revelation of vibrant florals and cosmic energy.", country: "Ethiopia and Tanzania", price: formatMoney(30) },
+	{ id: 12, name: "Cosmic Cocoa Cloud", roast: "dark", description: "From the depths of Brazil and Vietnam, a cosmic cloud of chocolatey richness and smoky whispers, evoking the essence of a celestial voyage.", country: "Brazil and Vietnam", price: formatMoney(30) },
+	{ id: 13, name: "Starlight Serenade", roast: "dark", description: "Inspired by cosmic melodies, this fusion of Nicaraguan and Thai beans swirls with celestial notes of nutty stars and a harmonious cosmic symphony.", country: "Nicaragua and Thailand", price: formatMoney(30) },
+	{ id: 14, name: "Cosmic Origin Odyssey", roast: "dark", description: "Embark on a journey through cosmic origins with rotating single-origin beans, unveiling the cosmic stories and flavors of celestial realms.", country: "Brazil and Kenya", price: formatMoney(30) },
 ];
 
 const addCoffee = (coffeeName, roastType) => {
@@ -44,7 +44,7 @@ const renderCoffeeElement = (coffee) => {
   				<div class="card-back d-flex flex-column align-items-start p-4">
 					<h5 class="card-title">${coffee.name}</h5>
 					<h6 class="card-subtitle mb-2 text-body-secondary">${coffee.roast}</h6>
-					<p style="font-weight: lighter">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<p style="font-weight: lighter">${coffee.country}</p>
 				</div>
   			</div>
 		</div>
