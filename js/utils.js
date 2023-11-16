@@ -9,3 +9,7 @@ export const debounce = (fn, delay) => {
         }, delay);
     };
 };
+export const formatMoney = (number) => {
+    let text = number.toLocaleString("en-US", {style:"currency", currency:"USD"});
+    return text;
+}
