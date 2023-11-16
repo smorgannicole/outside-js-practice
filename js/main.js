@@ -41,12 +41,16 @@ const renderCoffeeElement = (coffee) => {
   					<p>${coffee.description}</p>
   					<p style="font-weight: bold">${coffee.price}</p>
 				</div>
-  				<div class="card-back d-flex flex-column align-items-start p-4">
-					<h5 class="card-title">${coffee.name}</h5>
-					<h6 class="card-subtitle mb-2 text-body-secondary">${coffee.roast}</h6>
-					<p style="font-weight: lighter">${coffee.country}</p>
-					${coffee.userGenerated ? `<button class="btn btn-primary add" data-delete>Delete</button>` : ``}
-					${coffee.userGenerated ? `<button class="btn btn-secondary" data-edit>Edit</button>` : ``}
+  				<div class="card-back d-flex flex-column align-items-start justify-content-start p-4">
+					<div class="d-flex flex-grow-1 flex-column">
+						<h5 class="card-title" id="coffee-name">${coffee.name}</h5>
+						<h6 class="card-subtitle mb-2 text-body-secondary" id="roast-name">${coffee.roast}</h6>
+						<p style="font-weight: lighter">${coffee.country}</p>
+					</div>
+					<div class="d-flex btn-parent">
+						${coffee.userGenerated ? `<button class="btn btn-primary delete-btn" data-delete>Delete</button>` : ``}
+						${coffee.userGenerated ? `<button class="btn btn-secondary edit-btn" data-edit>Edit</button>` : ``}
+					</div>
 				</div>
   			</div>
 		</div>
@@ -68,6 +72,10 @@ const renderCoffeeElement = (coffee) => {
 	}
 	const innerCoffeeElement = coffeeElement.querySelector('.card');
 	innerCoffeeElement.addEventListener(`click`, e => {
+		console.log(e);
+		if (e.target.classList.contains('edit-btn') || e.target.classList.contains('delete-btn')) {
+			return;
+		}
 		innerCoffeeElement.classList.toggle(`flipped`);
 	})
 	document.querySelector("#coffees").prepend(coffeeElement);
@@ -108,10 +116,11 @@ function renderEditForm(coffee, coffeeElement) {
 		coffees.push({
 			name: coffee.name,
 			roast: coffee.roast,
+			country: coffee.country,
 			userGenerated: true
 		});
-		const editedName = coffeeElement.querySelector(".col:first-child p").textContent = coffee.name;
-		const editedRoast = coffeeElement.querySelector(".col:nth-child(2) p").textContent = coffee.roast;
+		const editedName = coffeeElement.querySelector("#coffee-name").textContent = coffee.name;
+		const editedRoast = coffeeElement.querySelector("#roast-name").textContent = coffee.roast;
 		localStorage.setItem("coffees", JSON.stringify(coffees));
 		editForm.remove();
 	});
@@ -193,4 +202,9 @@ const handleFilterEvents = () => {
 		nameInput.value = "";
 		roastInput.value = "";
 	});
+	// const deleteBtn = document.querySelector(`button.delete-btn`);
+	// deleteBtn.addEventListener(`hover`, e => {
+	// 	const coffeeElement = document.createElement("div");
+	// 	coffeeElement.classList.remove(`flipped`);
+	// })
 })();

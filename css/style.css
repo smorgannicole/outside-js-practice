@@ -142,7 +142,6 @@ div.search-box {
         position: relative;
         transform-style: preserve-3d;
         transition: transform 0.5s;
-        pointer-events: none;
         opacity: 100%;
         .card-front {
             width: 100%;
@@ -237,8 +236,14 @@ footer.footer {
     flex-direction: column;
     max-height: 100dvh;
 }
-button.delete {
+button.delete-btn {
 
+}
+button.edit-btn {
+    aspect-ratio: 4/1;
+}
+.btn-parent {
+    gap: 110px;
 }
 .removePointer {
     pointer-events: none;
