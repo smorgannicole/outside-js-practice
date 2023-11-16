@@ -171,6 +171,9 @@ const handleFilterEvents = (coffees) => {
 
 
 
+
+
+
 // MAIN
 (() => {
 	registerCoffees(coffees);
