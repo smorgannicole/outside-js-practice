@@ -1,13 +1,42 @@
-table {
-    border-collapse: collapse;
-    margin: 15px 0;
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css") layer(framework);
+@import url('https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&display=swap');
+:root {
+    --clr-p1: #777dc7;
+    --clr-p2: #878dda;
+    --clr-p3: #9499ee;
+    --clr-p4: #a4a5fa;
+    --clr-p5: #b1abfc;
+    --clr-p6: #BBACFF;
+    --clr-p7: #CBB2FE;
+    --clr-p8: #DAB5FC;
+    --clr-p9: #DDBDFC;
+    --clr-p10: #e2c7fc;
+}
+body {
+    font-family: 'Sulphur Point', sans-serif;
+    color: #fff;
+}
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+#grad {
+    background-image: linear-gradient(to bottom right, var(--clr-p1), var(--clr-p2), var(--clr-p3), var(--clr-p4), var(--clr-p5), var(--clr-p6), var(--clr-p7), var(--clr-p8), var(--clr-p9), var(--clr-p10));
 }
 
-td, th {
-    border: 1px solid black;
-    padding: 5px 10px;
+nav.navbar {
+    --bs-bg-opacity: 0;
+}
+
+button[data-search] {
+    --bs-btn-color: #fff;
+    --bs-btn-border-color: #fff;
+    --bs-btn-hover-bg: var(--clr-p6);
+    --bs-btn-hover-border-color: var(--clr-p6);
 }
 
 .removePointer {
     pointer-events: none;
 }
+

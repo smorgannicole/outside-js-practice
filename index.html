@@ -7,13 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Coffee Project</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
 <body>
+<div class="page-wrapper" id="grad">
 <header class="container">
     <div class="row">
         <div class="col">
-            <h1>Coffee!</h1>
+
+            <h1>Cosmic Coffee</h1>
         </div>
         <div class="col">
             <form>
@@ -29,8 +30,14 @@
         </div>
         <div class="col">
             <div class="input-group input-group-md">
-                <input id="search" type="search" aria-label="Search coffees"
-                       placeholder="Search coffees...">
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
+                            <button class="btn btn-outline-success" type="submit" data-search>Search</button>
+                        </form>
+                    </div>
+                </nav>
             </div>
         </div>
         <div class="col">
@@ -72,25 +79,7 @@
         </div>
     </section>
 
-
-<!--    <div id="coffees">-->
-<!--        <div class="coffee-container">-->
-<!--            <h2>Coffee Name 1</h2>-->
-<!--            <p>Type of Roast: Roast Type 1</p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    -->
-<!--    <table>-->
-<!--        <thead>-->
-<!--            <tr>-->
-<!--                <th>ID</th>-->
-<!--                <th>NAME</th>-->
-<!--                <th>ROAST</th>-->
-<!--            </tr>-->
-<!--        </thead>-->
-<!--        <tbody id="coffees"></tbody>-->
-<!--    </table>-->
-
     <script type="module" src="./js/main.js"></script>
+</div>
 </body>
 </html>
