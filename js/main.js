@@ -164,6 +164,12 @@ const handleFilterEvents = (coffees) => {
 		updateCoffees(coffees);
 	});
 };
+
+
+
+
+
+
 // MAIN
 (() => {
 	registerCoffees(coffees);

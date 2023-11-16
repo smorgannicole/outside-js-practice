@@ -10,71 +10,109 @@
 </head>
 <body>
 <div class="page-wrapper" id="grad">
-<header class="container">
-    <div class="row">
-        <div class="col">
-
-            <h1>Cosmic Coffee</h1>
-        </div>
-        <div class="col">
-            <form>
-                <label for="roast-selection"></label>
-                <select id="roast-selection">
-                    <option selected value="">Roast Selection</option>
-                    <option value="light">Light</option>
-                    <option value="medium">Medium</option>
-                    <option value="dark">Dark</option>
-                    <option value="all">All</option>
-                </select>
-            </form>
-        </div>
-        <div class="col">
-            <div class="input-group input-group-md">
-                <nav class="navbar bg-body-tertiary">
-                    <div class="container-fluid">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
-                            <button class="btn btn-outline-success" type="submit" data-search>Search</button>
-                        </form>
-                    </div>
-                </nav>
+    <header class="container">
+        <div class="row">
+            <div class="col d-flex flex-column align-items-center">
+                <h1 class="h1-padding text-center" style="font-size: 100px">Cosmic Coffee</h1>
+                <p class="text-center p-header-padding">simple coffee with a modern touch</p>
             </div>
         </div>
-        <div class="col">
-            <form id="add-form">
-                <h3><label class="form-label" for="add-name">Coffee Name</label></h3>
-                <input class="form-control" type="text" name="add-name" id="add-name" placeholder="Enter Coffee Name">
-                <h3><label class="form-label" for="add-roast">Roast Type</label></h3>
-                <input class="form-control" type="text" name="add-roast" id="add-roast" placeholder="Enter Roast Type">
-                <div>
-                    <button class="btn btn-primary add" data-add>Add Coffee</button>
-                </div>
-            </form>
-
-        </div>
-    </div>
-</header>
-
-
+    </header>
     <section class="container">
         <div class="row">
             <div class="col">
-                <h3>NAME</h3>
+                <ul class="nav justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Coffees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Add Your Own Blend</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="container coffee-container">
+        <div class="row">
+            <div class="col">
+
+
+                <form class="custom-form">
+                    <label for="roast-selection" class="custom-label"></label>
+                    <div class="custom-select">
+                        <select id="roast-selection" class="styled-select">
+                            <option selected value="">Roast Selection</option>
+                            <option value="light">Light</option>
+                            <option value="medium">Medium</option>
+                            <option value="dark">Dark</option>
+                            <option value="all">All</option>
+                        </select>
+                    </div>
+                </form>
             </div>
             <div class="col">
-                <h3>ROAST</h3>
+                <div class="input-group input-group-md">
+                    <nav class="navbar bg-body-tertiary">
+                        <div class="container-fluid search-box">
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Coffee Name" aria-label="Search" id="search">
+                                <button class="btn btn-outline-success" type="submit" data-search>Search</button>
+                            </form>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col">
+                    <h3>NAME</h3>
+                </div>
+                <div class="col">
+                    <h3>ROAST</h3>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="coffees">
+                    <!--            <div class="col">-->
+                    <!--                <p>${coffee.name}</p>-->
+                    <!--            </div>-->
+                    <!--            <div class="col">-->
+                    <!--                <p>${coffee.roast}</p>-->
+                    <!--            </div>-->
+                </div>
             </div>
         </div>
     </section>
     <section class="container">
         <div class="row">
-            <div  id="coffees">
-<!--            <div class="col">-->
-<!--                <p>${coffee.name}</p>-->
-<!--            </div>-->
-<!--            <div class="col">-->
-<!--                <p>${coffee.roast}</p>-->
-<!--            </div>-->
+
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col">
+
+            </div>
+            <div class="col">
+                <form id="add-form">
+                    <h3><label class="form-label" for="add-name">Coffee Name</label></h3>
+                    <input class="form-control" type="text" name="add-name" id="add-name" placeholder="Enter Coffee Name">
+                    <h3><label class="form-label" for="add-roast">Roast Type</label></h3>
+                    <input class="form-control" type="text" name="add-roast" id="add-roast" placeholder="Enter Roast Type">
+                    <div>
+                        <button class="btn btn-primary add" data-add>Add Coffee</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
