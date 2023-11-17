@@ -29,10 +29,9 @@ body {
 }
 .header-with-background {
     background-image: url('../images/new-ring.svg');
-    background-size: cover; /* Adjust as needed */
-    background-position: center center; /* Adjust as needed */
+    background-size: cover;
+    background-position: center center;
     position: relative;
-    z-index: 1;
 }
 .h1-padding {
     margin-top: 50px;

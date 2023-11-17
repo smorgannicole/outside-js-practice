@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Assessment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .hide {
+            display: none;
+        }
+        .link-hover {
+            background: grey;
+        }
+        .dark-mode {
+            background: dimgrey;
+            color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================ NAVBAR ================ -->
+<nav>
+    <ul>
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Data</a>
+        </li>
+        <li>
+            <a href="#">About</a>
+        </li>
+        <li>
+            <input id="search-text" type="text" name="search" placeholder="search data">
+            <button id="search-btn">Search</button>
+        </li>
+        <li id="dark-mode-toggle">
+            <button id="dark-mode-btn"><i class="fa fa-moon-o"></i></button>
+        </li>
+    </ul>
+</nav>
+
+<!-- ================ MAIN ================ -->
+<main class="container">
+    <header>
+        <h1><span id="to-mdn">DOM</span> Assessment</h1>
+    </header>
+    <section>
+        <h3>Data</h3>
+        <form>
+            <input id="new-data" type="text" name="data" placeholder="add new data here">
+            <button type="button" id="add-btn">Add Data</button>
+        </form>
+        <br>
+        <button id="clean-data-btn">Clean Data</button>
+        <br><br>
+        <div id="data">
+            <div>one</div>
+            <div>two</div>
+            <div>three</div>
+            <div>four</div>
+        </div>
+    </section>
+    <br>
+    <hr>
+    <br>
+    <section>
+        <form>
+            <label for="username">Username</label>
+            <input id="username" type="text" name="username" placeholder="type username">
+            <button id="login-btn" type="button" disabled>Login</button>
+        </form>
+    </section>
+</main>
+
+<!-- ================ POPUP ================ -->
+<div class="popup hide">
+    <div>
+        <h3>I'm a popup</h3>
+        <button id="dismiss-btn">Dismiss me</button>
+    </div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+
+<script src="main.js"></script>
+</body>
+</html>
