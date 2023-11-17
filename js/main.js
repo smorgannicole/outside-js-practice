@@ -88,9 +88,9 @@ const renderCoffeeElement = (coffee) => {
 	document.querySelector("#coffees").prepend(coffeeElement);
 };
 const registerCoffees = (coffees) => {
-	// if (localStorage.getItem("coffees")) {
-	// 	return;
-	// }
+	if (localStorage.getItem("coffees")) {
+		return;
+	}
 	localStorage.setItem("coffees", JSON.stringify(coffees))
 }
 function removeFromLocalStorage(coffeeId) {
@@ -137,6 +137,7 @@ function renderEditForm(coffee, coffeeElement) {
 		e.preventDefault();
 		const oldCoffeeName = coffee.name;
 		let coffees = JSON.parse(localStorage.getItem("coffees")) || [];
+		coffees = coffees.filter(coffee => coffee.name !== oldCoffeeName);
 
 		coffee.name = editForm.querySelector("#editName").value;
 		coffee.roast = editForm.querySelector("#editRoast").value;
@@ -144,25 +145,32 @@ function renderEditForm(coffee, coffeeElement) {
 		coffee.description = editForm.querySelector("#editDescription").value;
 		coffee.price = editForm.querySelector("#editPrice").value;
 
+		const spaceImages = {
+			comet: "../images/comet.jpg",
+			asteroid: "../images/asteroid.jpg",
+			default: "../images/default.jpg"
+		};
+
+
 		coffees.push({
 			name: coffee.name,
 			roast: coffee.roast,
 			country: coffee.country,
 			description: coffee.description,
 			price: coffee.price,
-			space: coffee.space,
+			space: spaceImages.comet,
 			userGenerated: true
 		});
 
-		addCoffee(coffee.name, coffee.roast, coffee.country, coffee.description, coffee.price)
 		localStorage.setItem("coffees", JSON.stringify(coffees));
+		coffeeElement.remove();
+		updateCoffees();
 		editForm.remove();
 	});
 	coffeeElement.after(editForm);
 }
-function updateLocalStorage(coffees) {
-	localStorage.setItem("coffees", JSON.stringify(coffees));
-}
+
+
 const updateCoffees = () => {
 	const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
 	document.querySelector("#coffees").innerHTML = "";
@@ -197,12 +205,6 @@ const updateCoffees = () => {
 	for (let coffee of filteredCoffees) {
 		renderCoffeeElement(coffee);
 	}
-
-	// const coffeesFragment = document.createDocumentFragment();
-	// for (let coffee of filteredCoffees) {
-	// 	coffeesFragment.appendChild(renderCoffeeElement(coffee));
-	// }
-	// document.querySelector("#coffees").appendChild(coffeesFragment);
 };
 const handleFilterEvents = () => {
 	const searchInput = document.querySelector("#search");
@@ -284,5 +286,5 @@ function closePopup() {
 		priceInput.value = "";
 	});
 	window.addEventListener("scroll", reveal);
-	setTimeout(displayPopup, 10000);
+	setTimeout(displayPopup, 20000);
 })();

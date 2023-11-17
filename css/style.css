@@ -98,7 +98,7 @@ button[data-search] {
     --bs-btn-active-border-color: var(--clr-cc1);
 }
 h1.h1-padding {
-    padding-top: 50px;
+    padding-top: 100px;
     inline-size: min-content;
     border-bottom: solid #000 1px;
 }
