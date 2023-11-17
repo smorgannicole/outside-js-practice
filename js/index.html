@@ -6,26 +6,35 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Coffee Project</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="page-wrapper" id="grad">
     <div class="" id="overlay-grab"></div>
-    <div class="container hide-discount" id="discount-selector">
+    <div class="container hide-discount p-5" id="discount-selector">
         <div class="row flex-column">
             <div class="col d-flex justify-content-end">
                 <button class="btn btn-outline-success" id="closeButton">X</button>
             </div>
             <div class="col d-flex justify-content-center">
-                <h3 class="enter-email">Enter your email to get 15% off</h3>
+                <h3 class="enter-email text-center mb-4">Enter your email to get <span style="font-weight: bold; font-size: 40px;">15% off</span> when you join our mailing list</h3>
+            </div>
+        <div class="row">
+            <div class="col">
+                <form id="add-your-email">
+                    <h3><label class="form-label" for="add-email">Email</label></h3>
+                    <input class="form-control mb-4" type="text" name="add-email" id="add-email" placeholder="Email">
+                    <button class="btn btn-outline-success" id="email-btn">Get my 15% off</button>
+                </form>
             </div>
         </div>
+        </div>
     </div>
-    <header class="container">
+    <header class="container header-with-background">
         <div class="row">
             <div class="col d-flex flex-column align-items-center">
                 <h1 class="h1-padding text-center slide-in-left" style="font-size: 100px">Cosmic Coffee</h1>
-                <p class="text-center p-header-padding slide-in-left">simple coffee with a modern touch</p>
+                <p class="text-center p-header-padding slide-in-left">Simple coffee with a modern touch</p>
             </div>
         </div>
     </header>
@@ -112,10 +121,8 @@
                     <input class="form-control mb-4" type="text" name="add-roast" id="add-roast" placeholder="Create Roast Type">
                     <h3><label class="form-label" for="country-name">Add Country</label></h3>
                     <input class="form-control mb-4" type="text" name="add-country" id="country-name" placeholder="Add Country of Origin">
-
                     <h3><label class="form-label" for="description">Add Description</label></h3>
                     <input class="form-control mb-4" type="text" name="description" id="description" placeholder="Add Description">
-
                     <h3><label class="form-label" for="price">Add Price</label></h3>
                     <input class="form-control" type="text" name="price" id="price" placeholder="Add Price">
                     <button class="btn btn-outline-success add mb-3" data-add
@@ -136,31 +143,46 @@
     <section class="container about-us reveal">
         <div class="row flex-column">
             <div class="col d-flex justify-content-center">
-                <h3 class="border-b">Morgan & Nathan - Our Founders</h3>
+                <h3 class="border-b mb-5">Morgan & Nathan - Our Founders</h3>
             </div>
-            <div class="col">
-                <p>Welcome to Cosmic Coffee, where passion for great coffee meets an out-of-this-world experience! Founded by Morgan and Nathan, our journey began with a shared love for the rich aroma and community spirit that coffee fosters.</p>
+            <div class="row">
+                <div class="col mb-5">
+                    <h5 style="font-weight: lighter">Our Cosmic Vision: Beyond crafting exquisite blends, we aim to create a cosmic community. From supporting local growers to nurturing a space where conversations flow as easily as the coffee, every cup at Cosmic Coffee embodies our commitment to fostering connections.</h5>
+                </div>
             </div>
-            <div class="col">
-                <p>Morgan: A visionary with an insatiable curiosity for the intricacies of coffee, Morgan’s journey into the world of beans started during travels across different continents. Her fascination with the cultural nuances and the artistry behind brewing methods laid the foundation for Cosmic Coffee's commitment to global flavors and sustainable sourcing.</p>
-            </div>
-            <div class="col">
-                <p>Nathan: A seasoned entrepreneur and coffee aficionado, Nathan brings his expertise in business strategy and a relentless pursuit of excellence to every cup. His background in sustainable practices and dedication to ethical sourcing shapes Cosmic Coffee’s mission to create an impact beyond just serving exceptional brews.</p>
-            </div>
-            <div class="col">
-                <p>Our Cosmic Vision: Beyond crafting exquisite blends, we aim to create a cosmic community. From supporting local growers to nurturing a space where conversations flow as easily as the coffee, every cup at Cosmic Coffee embodies our commitment to fostering connections.</p>
+                <div class="row">
+                    <div class="col">
+                        <img class="founder" src="../images/nathan.jpeg" alt="">
+                    </div>
+                    <div class="col d-flex align-items-center">
+                        <p><span style="font-weight: bold; font-size: x-large;">Nathan:</span> A seasoned entrepreneur and coffee aficionado, Nathan brings his expertise in business strategy and a relentless pursuit of excellence to every cup. His background in sustainable practices and dedication to ethical sourcing shapes Cosmic Coffee’s mission to create an impact beyond just serving exceptional brews.</p>
+                    </div>
+                </div>
+            <div class="row mb-5">
+                <div class="col d-flex align-items-center">
+                    <p><span style="font-weight: bold; font-size: x-large;">Morgan:</span> A visionary with an insatiable curiosity for the intricacies of coffee, Morgan’s journey into the world of beans started during travels across different continents. Her fascination with the cultural nuances and the artistry behind brewing methods laid the foundation for Cosmic Coffee's commitment to global flavors and sustainable sourcing.</p>
+                </div>
+                <div class="col">
+                    <img class="founder" src="../images/morgan.jpg" alt="">
+                </div>
             </div>
         </div>
     </section>
-    <footer class="container footer">
+    <div class="footer-divider"></div>
+    <footer class="container footer mb-5">
         <div class="row">
             <div class="col">
-                Join Us on this Cosmic Journey: Whether you're a seasoned coffee connoisseur or just beginning your exploration, we invite you to join Morgan, Nathan, and the entire Cosmic Coffee family on this cosmic odyssey. Together, let's savor every sip and celebrate the cosmic connections that unite us.
+                <p>Join Us on this Cosmic Journey: Whether you're a seasoned coffee connoisseur or just beginning your exploration, we invite you to join Morgan, Nathan, and the entire Cosmic Coffee family on this cosmic odyssey. Together, let's savor every sip and celebrate the cosmic connections that unite us.</p>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <img class="footer-img" src="../images/insta.png" alt="">
+                <img class="footer-img" src="../images/x.png" alt="">
+                <img class="footer-img" src="../images/snap.png" alt="">
             </div>
         </div>
     </footer>
 
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </div>
 </body>
