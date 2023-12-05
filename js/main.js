@@ -169,8 +169,6 @@ function renderEditForm(coffee, coffeeElement) {
 	});
 	coffeeElement.after(editForm);
 }
-
-
 const updateCoffees = () => {
 	const coffees = JSON.parse(localStorage.getItem("coffees")) || [];
 	document.querySelector("#coffees").innerHTML = "";
@@ -223,11 +221,6 @@ const handleFilterEvents = () => {
 		updateCoffees();
 	});
 };
-
-
-
-
-
 function reveal() {
 	let reveals = document.querySelectorAll(".reveal");
 	for (let i = 0; i < reveals.length; i++) {
@@ -254,8 +247,6 @@ function displayPopup() {
 	const emailButton = document.querySelector('#email-btn');
 	emailButton.addEventListener('click', closePopup);
 }
-
-
 function closePopup() {
 	const discountSelector = document.querySelector('#discount-selector');
 	const overlayGrab = document.querySelector('#overlay-grab');
@@ -264,8 +255,6 @@ function closePopup() {
 	discountSelector.classList.add('hide-discount');
 	overlayGrab.classList.remove('overlay');
 }
-
-// MAIN
 (() => {
 	registerCoffees(coffees);
 	updateCoffees();
