@@ -1,0 +1,31 @@
+@import url("../../css/bootstrap.min.css");
+
+:root {
+    --clr-plum: #2F1533;
+    --clr-baby-pink: #F9EDFF;
+    --clr-white: #fff;
+    --clr-barney: #AA2CDF;
+    --clr-font: #331637;
+}
+
+.page-wrapper {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-page-wrapper {
+    min-height: 50dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-row {
+    background-color: var(--clr-plum);
+    min-height: 50dvh;
+}
+
+.bottom-row {
+    background-color: var(--clr-baby-pink);
+    min-height: 100dvh;
+}
