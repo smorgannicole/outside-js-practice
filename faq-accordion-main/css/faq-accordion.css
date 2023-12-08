@@ -8,6 +8,10 @@
     --clr-font: #331637;
 }
 
+.body {
+    color: var(--clr-font);
+}
+
 .page-wrapper {
     min-height: 100dvh;
     display: flex;
@@ -28,4 +32,20 @@
 .bottom-row {
     background-color: var(--clr-baby-pink);
     min-height: 60dvh;
+}
+
+.faqCol {
+    min-height: 65dvh;
+    width: 50%;
+    background-color: var(--clr-white);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+}
+
+img.star {
+    height: 10%;
+    width: 10%;
 }
