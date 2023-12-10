@@ -44,7 +44,7 @@ body {
 }
 
 .faqCol {
-    min-height: 65dvh;
+    min-height: 60dvh;
     width: 50%;
     background-color: var(--clr-white);
     position: absolute;
@@ -83,13 +83,13 @@ img.plus {
 .active {
     position: absolute;
     z-index: 2;
-    top: -20px;
+    top: -25px;
     animation: moveUp .5s ease-in-out;
 }
 
 .btnActive {
     position: relative;
-    top: -20px;
+    top: -25px;
     animation: moveUp .5s ease-in-out;
 }
 
@@ -98,7 +98,7 @@ img.plus {
 }
 
 .question {
-    margin-bottom: 0;
+    position: absolute;
 }
 
 .answer {
@@ -107,7 +107,7 @@ img.plus {
     opacity: 0;
     animation: fadeIn 0.7s ease-in-out forwards;
     font-size: 14px;
-    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 @keyframes fadeIn {
@@ -124,6 +124,6 @@ img.plus {
         top: 0;
     }
     100% {
-        top: -20px;
+        top: -25px;
     }
 }
